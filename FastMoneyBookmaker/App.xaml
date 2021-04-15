@@ -1,0 +1,21 @@
+﻿<Application x:Class="FastMoneyBookmaker.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:FastMoneyBookmaker.ViewModels"
+             xmlns:view="clr-namespace:FastMoneyBookmaker.View"
+             xmlns:local="clr-namespace:FastMoneyBookmaker"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Languages/Lang.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+                <view:LoginUI/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:RegisterViewModel}">
+                <view:Register/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
