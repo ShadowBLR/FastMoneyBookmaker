@@ -4,17 +4,32 @@
              xmlns:vm="clr-namespace:FastMoneyBookmaker.ViewModels"
              xmlns:view="clr-namespace:FastMoneyBookmaker.View"
              xmlns:local="clr-namespace:FastMoneyBookmaker"
+             xmlns:cmd="clr-namespace:FastMoneyBookmaker.Commands"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Languages/Lang.xaml" />
+                <ResourceDictionary Source="Resources/Themes/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Resources/Themes/LanguageComboBoxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type vm:MyProfileVM}">
+                <view:MyProfile/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                <view:SettingsUI/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:PersonalAccountViewModel}">
+                <view:PersonalAccountUI/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:LoginViewModel}">
                 <view:LoginUI/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm:RegisterViewModel}">
                 <view:Register/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:MatchesViewModel}">
+                <view:MatchesUI/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

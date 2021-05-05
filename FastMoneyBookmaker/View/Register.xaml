@@ -10,6 +10,13 @@
              d:DesignHeight="450" d:DesignWidth="800"
               Background="#141111">
     <UserControl.Resources>
+        <Style TargetType="Button" x:Key="RegisterButton">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Background" Value="#969696"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="EmailTB" TargetType="TextBox">
             <Setter Property="Background" Value="#424242"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -80,7 +87,7 @@
             CornerRadius="10">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300" Margin="20">
 
-            <StackPanel DataContext="{Binding ActiveUser}">
+            <StackPanel DataContext="{Binding UserVM}">
                 <Border>
                     <TextBlock Text="{DynamicResource Registration}"
                                HorizontalAlignment="Center" 
@@ -100,8 +107,8 @@
                                                 <ColumnDefinition Width="auto"/>
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Width="32" Height="32" Source="/Resources/Icons/letter.png"/>
-                                            <TextBox Grid.Column="1" x:Name="EmailBox" Text="{Binding Email}"
+                                            <Image Width="30" Height="30" Source="/Resources/Icons/letter.png"/>
+                                            <TextBox Grid.Column="1" x:Name="EmailBox" Text="{Binding Contact.Email}"
                                              Style="{StaticResource EmailTB}"/>
                                         <TextBlock Grid.Column="1" x:Name="EmailTextBlock"
                                                    Text="{DynamicResource Email}"
@@ -137,7 +144,7 @@
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
                                             <Image Grid.Column="0" Height="32" Width="32" HorizontalAlignment="Left" Source="/Resources/Icons/home.png" />
-                                            <TextBox Grid.Column="1" x:Name="UsernameBox" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged, 
+                                            <TextBox Grid.Column="1" x:Name="UsernameBox" Text="{Binding User.Nickname, UpdateSourceTrigger=PropertyChanged, 
                         ValidatesOnDataErrors=true, NotifyOnValidationError=true}"
                                              Style="{StaticResource EmailTB}"/>
                                             <TextBlock Grid.Column="1" Text="{DynamicResource Nickname}"
@@ -175,23 +182,7 @@
                                             <Image Width="32" Height="32" HorizontalAlignment="Left" Source="/Resources/Icons/lock.png"/>
                                             <PasswordBox Grid.Column="1" x:Name="PasswordBox"
                                                  Style="{StaticResource PTB}"/>
-                                            <TextBlock Grid.Column="1"  Text="{DynamicResource Password}"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="14"
-                                                   Padding="12,0,0,0"
-                                                   Foreground="#969696"
-                                                   >
-                                                <TextBlock.Style>
-                                                    <Style TargetType="TextBlock">
-                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text,ElementName=PasswordBox}" Value="">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
+                                            
                                         </Grid>
                                     </DockPanel>
                                 </StackPanel>
@@ -207,6 +198,7 @@
                         CommandParameter="{Binding ElementName=PasswordBox}"
                             Background="#ed5353"
                         MinHeight="35">
+                   
                     <StackPanel Orientation="Horizontal">
          
                         <TextBlock HorizontalAlignment="Center"
@@ -217,6 +209,8 @@
                                    Foreground="White"
                                    />
                     </StackPanel>
+
+                
                 </Button>
             </Border>
 

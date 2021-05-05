@@ -9,19 +9,13 @@
         xmlns:vm="clr-namespace:FastMoneyBookmaker.ViewModels" d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         mc:Ignorable="d"
         Title="{StaticResource Title}" Height="450" Width="800" 
-        Icon="Resources/Icons/SoccerBall.png">
+        Icon="Resources/Icons/SoccerBall.png"
+        >
     <Grid Background="#141111">
         <Grid.RowDefinitions>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-            <Image Source="Resources/Icons/add.png" Height="32"></Image>
-            <TextBlock Text="{DynamicResource Bookmaker_name}"
-                       FontSize="15" VerticalAlignment="Center"></TextBlock>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-        </StackPanel>
+
 
         <ContentControl Content="{Binding CurrentPage}" Grid.Row="1"/>
     </Grid>

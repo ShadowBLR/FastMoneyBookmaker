@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,7 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,37 +65,63 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\AuthorizationUserCommand.cs" />
     <Compile Include="Commands\Base\Command.cs" />
     <Compile Include="Commands\Base\RelayCommand.cs" />
-    <Compile Include="Commands\ChangePasseportInfoCommand.cs" />
-    <Compile Include="Commands\CheckAllBetCommand.cs" />
-    <Compile Include="Commands\CloseWindowCommand.cs" />
-    <Compile Include="Commands\GoToLoginViewCommand.cs" />
-    <Compile Include="Commands\GoToRegisterViewCommand.cs" />
-    <Compile Include="Commands\MakeABetCommand.cs" />
-    <Compile Include="Commands\RefisterCommand.cs" />
-    <Compile Include="Commands\ShowLanguageSettingCommand.cs" />
+    <Compile Include="Database\BookmakerContext.cs" />
+    <Compile Include="Converters\ByteArryaToImageConverter.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Interfaces\IConverter.cs" />
     <Compile Include="Interfaces\IPageVIewModel.cs" />
     <Compile Include="Models\Bet.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Enums\ActionResult.cs" />
+    <Compile Include="Models\Enums\Gender.cs" />
     <Compile Include="Models\Enums\KindOfSport.cs" />
     <Compile Include="Models\Enums\MatchResult.cs" />
-    <Compile Include="Models\Enums\State.cs" />
+    <Compile Include="Models\Enums\BetState.cs" />
     <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\MessageBox.cs" />
     <Compile Include="Models\Passport.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
+    <Compile Include="ViewModels\For models\ContactViewModel.cs" />
+    <Compile Include="ViewModels\For models\MatchViewModel.cs" />
+    <Compile Include="ViewModels\For models\PassportViewModel.cs" />
+    <Compile Include="ViewModels\For models\TeamViewModel.cs" />
+    <Compile Include="ViewModels\For models\UserViewModel.cs" />
+    <Compile Include="ViewModels\MatchesViewModel.cs" />
+    <Compile Include="ViewModels\For models\BetViewModel.cs" />
+    <Compile Include="ViewModels\MyProfileVM.cs" />
+    <Compile Include="ViewModels\PersonalAccountViewModel.cs" />
     <Compile Include="ViewModels\LoginVIewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
-    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\FullUserViewModel.cs" />
     <Compile Include="View\LoginUI.xaml.cs">
       <DependentUpon>LoginUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MatchesUI.xaml.cs">
+      <DependentUpon>MatchesUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageBox.xaml.cs">
+      <DependentUpon>MessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyBetsUI.xaml.cs">
+      <DependentUpon>MyBetsUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyProfile.xaml.cs">
+      <DependentUpon>MyProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PersonalAccountUI.xaml.cs">
+      <DependentUpon>PersonalAccountUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingsUI.xaml.cs">
+      <DependentUpon>SettingsUI.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -107,11 +143,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Themes\LanguageComboBoxTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\MenuButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoginUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MatchesUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MyBetsUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MyProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PersonalAccountUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingsUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,15 +202,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\HelveticaRegular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FTP\Images\" />
     <Folder Include="Resources\Style\" />
   </ItemGroup>
   <ItemGroup>
@@ -176,5 +247,22 @@
   <ItemGroup>
     <Resource Include="Resources\Icons\lock.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\letter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

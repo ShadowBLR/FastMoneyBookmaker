@@ -1,22 +1,15 @@
-﻿using CourseWork.Commands;
-using CourseWork.ViewModels.Base;
-using FastMoneyBookmaker.Commands;
-using FastMoneyBookmaker.Commands.Base;
+﻿using CourseWork.ViewModels.Base;
 using FastMoneyBookmaker.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace FastMoneyBookmaker.ViewModels
 {
-     class MainViewModel:ViewModel,IPageVIewModel
+    class MainViewModel:ViewModel,IPageVIewModel
     {
-        public List<IPageVIewModel> listViewModel { get;} 
+        public MainWindow mainWnd { get; set; }
+        public BookmakerContext BookmakerContext { get; set; }
+        public List<IPageVIewModel> ListViewModel { get;} 
         private IPageVIewModel _currentPage;
         public IPageVIewModel CurrentPage
         {
@@ -25,53 +18,26 @@ namespace FastMoneyBookmaker.ViewModels
         }
         public void ChangeViewModel(IPageVIewModel viewModel)
         {
-            if(!listViewModel.Contains(viewModel))
+            if(!ListViewModel.Contains(viewModel))
             {
-                listViewModel.Add(viewModel);
+                ListViewModel.Add(viewModel);
             }
-            CurrentPage = listViewModel.FirstOrDefault(vm => vm == viewModel);
-        }
-        private RelayCommand goToRegisterViewCommand;
-        public ICommand GoToRegisterViewCommand
-        {
-            get 
-            {
-                if(goToRegisterViewCommand == null)
-                {
-                    goToRegisterViewCommand = new RelayCommand(
-                        (obj) => CurrentPage = listViewModel[1],
-                        (obj)=>true
-                        ) ;
-                    MessageBox.Show("CREATE COMMAND");
-                }
-                return goToRegisterViewCommand;
-            }
-        }
-        private RelayCommand goToLoginViewModel;
-        public ICommand GoToLoginViewCommand
-        {
-            get
-            {
-                if (goToLoginViewModel == null)
-                {
-                    goToLoginViewModel = new RelayCommand(
-                        (obj) => CurrentPage = listViewModel[0],
-                        (obj) => true
-                        );
-                    MessageBox.Show("CREATE COMMAND");
-                }
-                return goToLoginViewModel;
-            }
+            CurrentPage = ListViewModel.FirstOrDefault(vm => vm == viewModel);
         }
         #region constructor
-        public MainViewModel()
+        public MainViewModel(BookmakerContext bk,MainWindow mainWindow)
         {
-            listViewModel = new List<IPageVIewModel>
+            mainWnd = mainWindow;
+            BookmakerContext = bk;
+                ListViewModel = new List<IPageVIewModel>
             {
-                new LoginViewModel(this),
-                new RegisterViewModel(this)
-            };
-            CurrentPage = listViewModel[0];
+                new LoginViewModel(this,BookmakerContext),
+                new RegisterViewModel(this,BookmakerContext),
+                new PersonalAccountViewModel(this,BookmakerContext)
+             };
+            CurrentPage = ListViewModel[0];
+            //CurrentPage = new PersonalAccountViewModel(this,BookmakerContext);
+           
 
         }
         #endregion

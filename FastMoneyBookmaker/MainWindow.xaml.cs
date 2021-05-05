@@ -1,5 +1,8 @@
 ﻿using FastMoneyBookmaker.ViewModels;
+using System.Data.Entity;
 using System.Windows;
+using FastMoneyBookmaker.View;
+using System;
 
 namespace FastMoneyBookmaker
 {
@@ -8,11 +11,21 @@ namespace FastMoneyBookmaker
     /// </summary>
     public partial class MainWindow : Window
     {
+        BookmakerContext Bk { get; set; }
         public MainWindow()
         {
+           Bk  = new BookmakerContext();
+            Bk.Users.Load();
+            Bk.Passports.Load();
+            Bk.Contacts.Load();
             InitializeComponent();
-            MainViewModel mainView = new MainViewModel();
+            MainViewModel mainView = new MainViewModel(Bk,this);
             this.DataContext = mainView;
+           
+        }
+        ~MainWindow()
+        {
+            Bk.Dispose();
         }
     }
 }

@@ -11,22 +11,38 @@ namespace FastMoneyBookmaker.Helpers
     {
         public string Hash { get; set; }
         public string Salt { get; set; }
-        public HashHelper(string password)
+        public HashHelper()
         {
-            var saltBytes = new byte[32];
-            new Random().NextBytes(saltBytes);
-            Salt = Convert.ToBase64String(saltBytes);
-            string passwordAndSalt = String.Concat(password, Salt);
-            Hash = ConvertByteArrayToString( SHA256.Create()
-                         .ComputeHash(ConvertStrinToByteArray(passwordAndSalt)));
+            
+         
         }
-        public byte[] ConvertStrinToByteArray(string str)
+        public static string CalculeHashSHA256(string pass ,string salt )
+        {
+            string passWithSalt = ConcatPassWithSalt(pass, salt);
+            return ConvertByteArrayToString(SHA256.Create()
+                         .ComputeHash(ConvertStrinToByteArray(passWithSalt)));
+        }
+        public static string ConcatPassWithSalt( string pass,string salt)
+        {
+            return String.Concat(pass, salt);
+        }
+        public  static string GenerateSalt32()
+        {
+            byte[] saltBytes = new byte[32];
+            new Random().NextBytes(saltBytes);
+            return Convert.ToBase64String(saltBytes);
+        }
+        public static byte[] ConvertStrinToByteArray(string str)
         {
             return Encoding.UTF8.GetBytes(str);
         }
-        public string ConvertByteArrayToString(byte[] array)
+        public  static string ConvertByteArrayToString(byte[] array)
         {
-            return array.ToString();
+            return Encoding.Default.GetString(array);
+        }
+        public  bool IsEqual(string hash)
+        {
+            return Hash == hash;
         }
     }
 }

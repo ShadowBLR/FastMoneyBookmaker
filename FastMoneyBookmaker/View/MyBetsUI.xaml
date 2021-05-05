@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="FastMoneyBookmaker.View.MyBetsUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FastMoneyBookmaker.View"
+             mc:Ignorable="d" 
+             xmlns:vm="clr-namespsace:FastMoneyBookmaker.ViewModels" 
+             
+             >
+    <Grid>
+        <DataGrid x:Name="MyBets" ItemsSource="{Binding CurrentUser.User.Bet}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource Id}" Binding="{Binding BetId}"/>
+                <DataGridTextColumn Header="{DynamicResource DateOfBet}" Binding="{Binding DateOfBet}"/>
+                <DataGridTextColumn Header="{DynamicResource Cash}" Binding="{Binding Cash}"/>
+                <DataGridTextColumn Header="{DynamicResource StateOfBet}" Binding="{Binding State}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

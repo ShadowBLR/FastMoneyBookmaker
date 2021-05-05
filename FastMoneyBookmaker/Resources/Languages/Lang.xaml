@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="DateOfBet">Date of bet</v:String>
     <v:String x:Key="test" >Some text</v:String>
     <v:String x:Key="Bookmaker_name" >FastMoney</v:String>
     <v:String x:Key="Authorization">Log in</v:String>
@@ -11,12 +12,13 @@
     <v:String x:Key="HaveAnAccount">Have an account?</v:String>
     <v:String x:Key="Email">Email</v:String>
     <v:String x:Key="All">All</v:String>
-    <v:String x:Key="StartDate">Дата начала</v:String>
+    <v:String x:Key="StartDate">Start date</v:String>
     <v:String x:Key="MatchResult">Match result</v:String>
     <v:String x:Key="MakeABet">Make a bet</v:String>
     <v:String x:Key="Id">Id</v:String>
     <v:String x:Key="FirstTeam">First team</v:String>
     <v:String x:Key="SecondTeam">Second team</v:String>
+    <v:String x:Key="StateOfBet">State of bet</v:String>
     <v:String x:Key="LogOut">Log out</v:String>
     <v:String x:Key="Cash">Cash</v:String>
     <v:String x:Key="BetOn">Bet on</v:String>
@@ -25,4 +27,9 @@
     <v:String x:Key="Title">FastMoney</v:String>
     <v:String x:Key="TeamName">Team name</v:String>
     <v:String x:Key="WinRate">Win rate</v:String>
+    <v:String x:Key="UFC">UFC</v:String>
+    <v:String x:Key="Profile">Profile</v:String>
+    <v:String x:Key="MyBets">My bets</v:String>
+    <v:String x:Key="Matches">Matches</v:String>
+    <v:String x:Key="AboutMe">About me</v:String>
 </ResourceDictionary>

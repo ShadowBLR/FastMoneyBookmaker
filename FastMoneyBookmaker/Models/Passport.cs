@@ -1,27 +1,26 @@
-﻿using System;
+﻿using FastMoneyBookmaker.Models.Enums;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookmaker.Models
+namespace FastMoneyBookmaker.Models
 {
     class Passport
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
+        public string SurName { get; set; }
         public string LastName { get; set; }
-        public string Patronymic { get; set; }
-        public byte[] Photo { get; set; }
-
-        public Passport(string id, string firstName, string lastName, string patronymic, byte[] Photo)
+        public Gender Gender { get; set; }
+        public DateTime DateOfBIrth { get; set; }
+       public Passport()
         {
-            this.Id = id;
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.Patronymic = patronymic;
-            this.Photo = Photo;
+            FirstName = "";
+            SurName = "";
+            LastName = "";
+            DateOfBIrth = default;
         }
     }
 }
