@@ -32,4 +32,5 @@
     <v:String x:Key="MyBets">My bets</v:String>
     <v:String x:Key="Matches">Matches</v:String>
     <v:String x:Key="AboutMe">About me</v:String>
+    <v:String x:Key="KindOfSport">Category</v:String>
 </ResourceDictionary>

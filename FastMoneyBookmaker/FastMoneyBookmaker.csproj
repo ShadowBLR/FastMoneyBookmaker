@@ -85,14 +85,14 @@
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
+    <Compile Include="ViewModels\BetViewModel.cs" />
     <Compile Include="ViewModels\For models\ContactViewModel.cs" />
     <Compile Include="ViewModels\For models\MatchViewModel.cs" />
     <Compile Include="ViewModels\For models\PassportViewModel.cs" />
     <Compile Include="ViewModels\For models\TeamViewModel.cs" />
     <Compile Include="ViewModels\For models\UserViewModel.cs" />
     <Compile Include="ViewModels\MatchesViewModel.cs" />
-    <Compile Include="ViewModels\For models\BetViewModel.cs" />
-    <Compile Include="ViewModels\MyProfileVM.cs" />
+    <Compile Include="ViewModels\MyProfileViewMode.cs" />
     <Compile Include="ViewModels\PersonalAccountViewModel.cs" />
     <Compile Include="ViewModels\LoginVIewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

@@ -13,11 +13,12 @@ namespace FastMoneyBookmaker.Models
         public decimal Balance { get; set; }
         public bool IsAdministrator { get; set; }
         public bool IsBlocked { get; set; }
+        public bool IsConfirmed { get; set; }
         public string Hash { get; set; }
         public string Salt { get; set; }
         public string Avatar { get; set; }
         public virtual Passport Passport { get; set; }
         public virtual Contact Contact { get; set; }
-        public List<Bet> Bets { get; set;}
+        public virtual List<Bet> Bets { get; set;}
     }
 }

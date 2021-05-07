@@ -66,6 +66,8 @@ namespace FastMoneyBookmaker.ViewModels
                             };
                             bmContext.Users.Add(usr);
                             bmContext.SaveChanges();
+                            GoToLoginViewCommand.Execute(null);
+                            
                         }
                         else
                         {

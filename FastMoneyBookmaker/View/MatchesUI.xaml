@@ -11,16 +11,13 @@
     <Grid>
         <DataGrid ItemsSource="{Binding Matches}" AutoGenerateColumns="False"
                   IsReadOnly="True" CanUserAddRows="False" CanUserSortColumns="True"
-                  HorizontalScrollBarVisibility="Disabled" IsEnabled="False"
-                  > 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="{DynamicResource Id}" Binding="{Binding Path=Id}"/>
-                <DataGridTextColumn Header="{DynamicResource KindOfSport}" Binding="{Binding Path=KindOfSport}"/>
-                <DataGridTextColumn Header="{DynamicResource TeamName}" Binding="{Binding Path=Teams[0].Name}"/>
-                <DataGridTextColumn Header="{DynamicResource TeamName}" Binding="{Binding Teams[1].Name}"/>
-                <DataGridTextColumn Header="{DynamicResource BetOn}"/>
-                <DataGridTextColumn Header="{DynamicResource Cash}"/>
-                <DataGridTextColumn Header="{DynamicResource StateOfBet}"/>
+                  HorizontalScrollBarVisibility="Disabled" MinRowHeight="30"
+                  >
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="{DynamicResource Id}" Binding="{Binding Path=Id}" Width="0.3*"/>
+                <DataGridTextColumn Header="{DynamicResource KindOfSport}" Binding="{Binding Path=KindOfSport}" Width="1*"/>
+                <DataGridTextColumn Header="{DynamicResource TeamName}" Binding="{Binding Path=Teams[0].Name}" Width="1*"/>
+                <DataGridTextColumn Header="{DynamicResource TeamName}" Binding="{Binding Teams[1].Name}" Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
         

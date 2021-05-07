@@ -28,8 +28,10 @@ namespace FastMoneyBookmaker.ViewModels
             MenuList = new List<IPageVIewModel>()
             {
                 new SettingsViewModel(mainVM.mainWnd),
-                new MyProfileVM(),
-                new MatchesViewModel()
+                new MyProfileViewMode(),
+                new MatchesViewModel(BookmakerContext,mainVM.CurrentUser),
+                new MyProfileViewMode(),
+                new BetViewModel(context,mainVM.CurrentUser)
             };
 
         }

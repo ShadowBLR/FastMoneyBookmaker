@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FastMoneyBookmaker.View"
              mc:Ignorable="d" 
              xmlns:vm="clr-namespace:FastMoneyBookmaker.ViewModels" 
-             d:DataContext="{d:DesignInstance Type=vm:MyProfileVM}"
+             d:DataContext="{d:DesignInstance Type=vm:MyProfileViewMode}"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>

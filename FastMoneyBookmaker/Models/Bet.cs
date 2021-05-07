@@ -13,6 +13,7 @@ namespace FastMoneyBookmaker.Models
         public decimal Cash { get; set; }
         public BetState State { get; set; }
         public Match Match { get; set; }
-
+        public int? UserId { get; set; }
+        public User User { get; set; }
     }
 }

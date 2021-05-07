@@ -1,5 +1,6 @@
 ﻿using CourseWork.ViewModels.Base;
 using FastMoneyBookmaker.Interfaces;
+using FastMoneyBookmaker.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,6 +9,7 @@ namespace FastMoneyBookmaker.ViewModels
     class MainViewModel:ViewModel,IPageVIewModel
     {
         public MainWindow mainWnd { get; set; }
+        public User CurrentUser { get; set; }
         public BookmakerContext BookmakerContext { get; set; }
         public List<IPageVIewModel> ListViewModel { get;} 
         private IPageVIewModel _currentPage;

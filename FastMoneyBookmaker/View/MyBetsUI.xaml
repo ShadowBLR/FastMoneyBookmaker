@@ -6,18 +6,20 @@
              xmlns:local="clr-namespace:FastMoneyBookmaker.View"
              mc:Ignorable="d" 
              xmlns:vm="clr-namespsace:FastMoneyBookmaker.ViewModels" 
-             
-             >
+             xmlns:viewmodels="clr-namespace:FastMoneyBookmaker.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:BetViewModel}">
+
     <Grid>
-        <DataGrid x:Name="MyBets" ItemsSource="{Binding CurrentUser.User.Bet}"
+        <DataGrid x:Name="MyBets" ItemsSource="{Binding Bets}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="{DynamicResource Id}" Binding="{Binding BetId}"/>
-                <DataGridTextColumn Header="{DynamicResource DateOfBet}" Binding="{Binding DateOfBet}"/>
-                <DataGridTextColumn Header="{DynamicResource Cash}" Binding="{Binding Cash}"/>
-                <DataGridTextColumn Header="{DynamicResource StateOfBet}" Binding="{Binding State}"/>
-            </DataGrid.Columns>
+            <DataGridTextColumn Header="{DynamicResource MyBets}" Binding="{Binding BetId}"/>
+            <DataGridTextColumn Header="{DynamicResource DateOfBet}" Binding="{Binding DateOfBet}"/>
+            <DataGridTextColumn Header="{DynamicResource Cash}" Binding="{Binding Cash}"/>
+            <DataGridTextColumn Header="{DynamicResource StateOfBet}" Binding="{Binding State}"/>
+            <DataGridTextColumn Header="{DynamicResource KindOfSport}" Binding="{Binding Match.KindOfSport}"/>
+        </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </UserControl>

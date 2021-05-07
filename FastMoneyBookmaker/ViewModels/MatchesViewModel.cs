@@ -12,64 +12,34 @@ namespace FastMoneyBookmaker.ViewModels
 {
     class MatchesViewModel : ViewModel, IPageVIewModel
     {
-        private Match match;
-        #region match's fields
-        public int Id
+        private User currentUser;
+        public User CurrentUser
         {
-            get => match.Id;
-            set
-            {
-                match.Id = value;
-                OnPropertyChanged("Id");
-            }
+            get => currentUser;
+            set => Set(ref currentUser, value);
         }
-        public KindOfSport KindOfSport
-        {
-            get => match.KindOfSport;
-            set
-            {
-                match.KindOfSport = value;
-                OnPropertyChanged("KindOfSport");
-            }
-        }
-        public List<Team> Teams
-        {
-            get => match.Teams;
-            set
-            {
-                match.Teams = value;
-                OnPropertyChanged("Teams");
-            }
-        }
-
-        #endregion
+        private BookmakerContext context;
         private ObservableCollection<Match> matches;
         public ObservableCollection<Match> Matches
         {
             get=>matches;
             set => Set(ref matches, value);
         }
-        public MatchesViewModel()
+        public MatchesViewModel(BookmakerContext context,User user)
         {
-            Matches = new ObservableCollection<Match>
-            {
-                new Match
-                {
-                     Id=1,
-                     KindOfSport=KindOfSport.BasketBall,
-                     Teams = new List<Team>
-                     {
-                         new Team
-                         {
-                              Name="Nemiga"
-                         },new Team
-                         {
-                             Name="EG"
-                         }
-                     }
-                }
-            };
-            //Matches[0];
+/*           CurrentUser =user ;
+           this.context = context;
+           Matches = this.context.Matches.Local;
+            var mat = from m in context.Matches
+                      join
+t in context.Teams on m.Id equals t.MatchId
+                      select new new
+                      {
+                          m.Id,
+                          m.KindOfSport,
+                          m.Teams
+                      };*/
+
         }
     }
 }
