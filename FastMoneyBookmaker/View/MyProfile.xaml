@@ -22,11 +22,11 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <Grid>
 
-                <TextBlock Text="{Binding UserVM.User.Nickname}" 
+                <TextBlock Text="{Binding CurrentUser.Nickname}" 
                            FontSize="22"/>
-                <TextBlock Text="{Binding UserVM.Passport.FirstName}"/>
-                <TextBlock Text="{Binding UserVM.Passport.SurName}"/>
-                <TextBlock Text="{Binding UserVM.Passport.LastName}"/>
+                <TextBlock Text="{Binding CurrentUser.Passport.FirstName}"/>
+                <TextBlock Text="{Binding CurrentUser.Passport.SurName}"/>
+                <TextBlock Text="{Binding CurrentUser.Passport.LastName}"/>
                 <StackPanel>
                     <Image HorizontalAlignment="Right"
                     Source="{Binding ImagePath}" Height="155" Width="143"/>
@@ -36,7 +36,7 @@
                             Width="143"
                             Height="20"
                             Command="{Binding Path=LoadPictureCommand}"
-                            CommandParameter="{Binding UserVM.User.Avatar}"/>
+                            CommandParameter="{Binding CurrentUser.Avatar}"/>
                 </StackPanel>
             </Grid>
             <Grid>

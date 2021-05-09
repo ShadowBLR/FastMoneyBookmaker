@@ -10,9 +10,6 @@
              d:DesignHeight="450" d:DesignWidth="800"
              >
     <UserControl.Resources>
-        <DataTemplate x:Name="UserViewTemplate" DataType="{x:Type vm:FullUserViewModel}">
-            <local:LoginUI DataContext="{Binding}"/>
-        </DataTemplate>
         <Style x:Key="MenuButton" TargetType="Button">
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -78,31 +75,41 @@
                 </Button.Template>
             </Button>
         </Grid>
-        <StackPanel Grid.Row="1" Background="#2e2c2c">
-            <RadioButton Content="Home"
-                         Height="50"
-                         Foreground="white"
-                         FontSize="14"
-                         Style="{StaticResource MenuButtonTheme}"/>
-            <RadioButton Content="Bets"
-                         Height="50"
+        <StackPanel Grid.Row="1" Background="#2e2c2c"
+                    Height="auto"
+                    VerticalAlignment="Stretch"
+                    >
+            <RadioButton Content="{DynamicResource Home}"
+                         MinHeight="50"
+                         MaxHeight="100"
                          Foreground="white"
                          FontSize="22"
-                         Style="{StaticResource MenuButtonTheme}"/>
-            <RadioButton Content="Mathes"
-                         Height="50"
+                         Style="{StaticResource MenuButtonTheme}"
+                         VerticalAlignment="Stretch"/>
+            <RadioButton Content="{DynamicResource MyBets}"
+                         MinHeight="50"
+                         MaxHeight="100"
+                         Foreground="white"
+                         FontSize="22"
+                         Style="{StaticResource MenuButtonTheme}"
+                         VerticalAlignment="Stretch"/>
+            <RadioButton Content="{DynamicResource Matches}"
+                         MinHeight="50"
+                         MaxHeight="100"
                          Foreground="white"
                          FontSize="22"
                          Command="{Binding ShowMatchesUI}"
                          Style="{StaticResource MenuButtonTheme}"/>
-            <RadioButton Content="Profile"
-                         Height="50"
+            <RadioButton Content="{DynamicResource MyProfile}"
+                         MinHeight="50"
+                         MaxHeight="100"
                          Foreground="white"
                          FontSize="22"
                          Command="{Binding ShowMyProfileUI}"
                          Style="{StaticResource MenuButtonTheme}"/>
-            <RadioButton Content="Settings"
-                         Height="50"
+            <RadioButton Content="{DynamicResource Settings}"
+                         MinHeight="50"
+                         MaxHeight="100"
                          Foreground="white"
                          FontSize="22"
                          Style="{StaticResource MenuButtonTheme}"

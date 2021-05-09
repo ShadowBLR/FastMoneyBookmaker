@@ -73,6 +73,7 @@
     <Compile Include="Interfaces\IConverter.cs" />
     <Compile Include="Interfaces\IPageVIewModel.cs" />
     <Compile Include="Models\Bet.cs" />
+    <Compile Include="Models\BetTeam.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Enums\ActionResult.cs" />
     <Compile Include="Models\Enums\Gender.cs" />
@@ -86,11 +87,6 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\BetViewModel.cs" />
-    <Compile Include="ViewModels\For models\ContactViewModel.cs" />
-    <Compile Include="ViewModels\For models\MatchViewModel.cs" />
-    <Compile Include="ViewModels\For models\PassportViewModel.cs" />
-    <Compile Include="ViewModels\For models\TeamViewModel.cs" />
-    <Compile Include="ViewModels\For models\UserViewModel.cs" />
     <Compile Include="ViewModels\MatchesViewModel.cs" />
     <Compile Include="ViewModels\MyProfileViewMode.cs" />
     <Compile Include="ViewModels\PersonalAccountViewModel.cs" />
@@ -98,7 +94,6 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\FullUserViewModel.cs" />
     <Compile Include="View\LoginUI.xaml.cs">
       <DependentUpon>LoginUI.xaml</DependentUpon>
     </Compile>

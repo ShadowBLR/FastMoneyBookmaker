@@ -1,32 +1,43 @@
 ﻿using CourseWork.ViewModels.Base;
 using FastMoneyBookmaker.Commands.Base;
 using FastMoneyBookmaker.Interfaces;
+using FastMoneyBookmaker.Models;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
+using System.Linq;
 using System.Windows.Media.Imaging;
 
 namespace FastMoneyBookmaker.ViewModels
 {
     class MyProfileViewMode:ViewModel,IPageVIewModel
     {
-       public FullUserViewModel UserVM { get; set; }
-        private Uri uri;
-        private Uri oldUri;
+        private User currentUser;
+        public User CurrentUser
+        {
+            get => currentUser;
+            set => Set(ref currentUser, value);
+        }
+        public BookmakerContext Context { get; set; }
         private BitmapFrame imagePath;
         public BitmapFrame ImagePath
         {
             get => imagePath;
             set => Set(ref imagePath, value);
         }
- 
+        public MyProfileViewMode(BookmakerContext bookmaker,User currentUser)
+        {
+            CurrentUser = currentUser;
+            Context = bookmaker;
+            if (!String.IsNullOrEmpty(CurrentUser.Avatar))
+            {
+                ImagePath = BitmapFrame.Create
+                      (new Uri(
+                              CurrentUser.Avatar, UriKind.Relative
+                              ), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+            }
+        }
         private RelayCommand loadPictureCommand;
         public ICommand LoadPictureCommand
         {
@@ -45,9 +56,9 @@ namespace FastMoneyBookmaker.ViewModels
         private void LoadPicture(ref object obj)
         {
             string oldPath="";
-            if (ImagePath != null)
+            if (obj is string)
             {
-                oldPath = ImagePath.Decoder.ToString();
+                oldPath = (string)obj;
             }
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -57,25 +68,26 @@ namespace FastMoneyBookmaker.ViewModels
             };
             if (openFileDialog.ShowDialog() == true)
             {
-              if(oldUri!=null)
+                string path = @"../../FTP/Images/"+CurrentUser.Nickname + Path.GetExtension(openFileDialog.FileName);
+                if (!string.IsNullOrEmpty(oldPath))
                 {
-                    oldUri = uri;
-                }
-                
-                string path = @"../../FTP/Images/"+openFileDialog.SafeFileName + Path.GetExtension(openFileDialog.FileName);
-                File.Copy(openFileDialog.FileName, path);
-                uri = new Uri(path, UriKind.Relative);
-                ImagePath = BitmapFrame.Create(uri,BitmapCreateOptions.None,BitmapCacheOption.OnLoad);
-                //ImagePath  = BitmapFrame.Create(new Uri(path,UriKind.Relative));
-                if(!string.IsNullOrEmpty(oldPath))
-                {
-                    
                     File.Delete(oldPath);
                 }
+                File.Copy(openFileDialog.FileName, path);   
+                CurrentUser.Avatar = path;
+                ImagePath = BitmapFrame.Create
+                    (new Uri(
+                            path, UriKind.Relative
+                            ), BitmapCreateOptions.None,BitmapCacheOption.OnLoad);
+                var usr = Context.Users
+                    .Where(us => us.Nickname == CurrentUser.Nickname)
+                    .FirstOrDefault();
+                usr.Avatar = CurrentUser.Avatar;
+                Context.SaveChanges();
             }
             else
             {
-                MessageBox.Show("ERROR");
+                System.Windows.MessageBox.Show("ERROR");
             }
         }
     

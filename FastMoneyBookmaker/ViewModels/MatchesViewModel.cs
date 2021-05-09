@@ -25,21 +25,15 @@ namespace FastMoneyBookmaker.ViewModels
             get=>matches;
             set => Set(ref matches, value);
         }
-        public MatchesViewModel(BookmakerContext context,User user)
+        public MatchesViewModel(BookmakerContext context, User user)
         {
-/*           CurrentUser =user ;
-           this.context = context;
-           Matches = this.context.Matches.Local;
-            var mat = from m in context.Matches
-                      join
-t in context.Teams on m.Id equals t.MatchId
-                      select new new
-                      {
-                          m.Id,
-                          m.KindOfSport,
-                          m.Teams
-                      };*/
-
+            CurrentUser = user;
+            this.context = context;
+            Matches = context.Matches.Local;
+         /*   Matches = context.Matches.Local.Join(context.Teams,
+                p => p.Teams,
+                t => t.Matches,
+                (p, t) => new { });*/
         }
     }
 }

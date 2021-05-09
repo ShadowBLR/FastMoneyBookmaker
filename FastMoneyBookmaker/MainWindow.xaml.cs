@@ -18,6 +18,9 @@ namespace FastMoneyBookmaker
             Bk.Users.Load();
             Bk.Passports.Load();
             Bk.Contacts.Load();
+            Bk.Matches.Load();
+            Bk.Bets.Load();
+            Bk.Teams.Load();
             InitializeComponent();
             MainViewModel mainView = new MainViewModel(Bk,this);
             this.DataContext = mainView;

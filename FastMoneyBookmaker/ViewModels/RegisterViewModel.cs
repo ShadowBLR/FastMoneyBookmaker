@@ -15,7 +15,7 @@ namespace FastMoneyBookmaker.ViewModels
     class RegisterViewModel: ViewModel,IPageVIewModel
     {
         private BookmakerContext bmContext { get; }
-        public FullUserViewModel UserVM { get; set; }
+        public User CurrentUser { get; set; }
         private MainViewModel mainViewModel;
         public MainViewModel MainViewModel
         {
@@ -41,8 +41,8 @@ namespace FastMoneyBookmaker.ViewModels
         {
             if (obj is PasswordBox passBox)
             { 
-                string nick = UserVM.User.Nickname;
-                string email = UserVM.Contact.Email;
+                string nick = CurrentUser.Nickname;
+                string email = CurrentUser.Contact.Email;
                 if (IsValidPassword(passBox.Password))
                 {
                     if (IsNotExistsEmailInDB(email))
@@ -132,7 +132,7 @@ namespace FastMoneyBookmaker.ViewModels
         {
             mainViewModel = parent;
             bmContext = context;
-            UserVM = new FullUserViewModel();
+            CurrentUser = new User();
         }
         public RegisterViewModel( )
         {

@@ -87,14 +87,14 @@
             CornerRadius="10">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300" Margin="20">
 
-            <StackPanel DataContext="{Binding UserVM}">
+            <StackPanel DataContext="{Binding CurrentUser}">
                 <Border>
                     <TextBlock Text="{DynamicResource Registration}"
                                HorizontalAlignment="Center" 
                                FontSize="26"
                                FontWeight="DemiBold"
                                Foreground="white"
-                               ></TextBlock>
+                               />
                 </Border>
                 <Grid>
                     <Border Grid.Column="0" BorderThickness="1">
@@ -108,7 +108,7 @@
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
                                             <Image Width="30" Height="30" Source="/Resources/Icons/letter.png"/>
-                                            <TextBox Grid.Column="1" x:Name="EmailBox" Text="{Binding Contact.Email}"
+                                            <TextBox Grid.Column="1" x:Name="EmailBox" Text="{Binding CurrentUser.Contact.Email}"
                                              Style="{StaticResource EmailTB}"/>
                                         <TextBlock Grid.Column="1" x:Name="EmailTextBlock"
                                                    Text="{DynamicResource Email}"
@@ -144,7 +144,7 @@
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
                                             <Image Grid.Column="0" Height="32" Width="32" HorizontalAlignment="Left" Source="/Resources/Icons/home.png" />
-                                            <TextBox Grid.Column="1" x:Name="UsernameBox" Text="{Binding User.Nickname, UpdateSourceTrigger=PropertyChanged, 
+                                            <TextBox Grid.Column="1" x:Name="UsernameBox" Text="{Binding CurrentUser.Nickname, UpdateSourceTrigger=PropertyChanged, 
                         ValidatesOnDataErrors=true, NotifyOnValidationError=true}"
                                              Style="{StaticResource EmailTB}"/>
                                             <TextBlock Grid.Column="1" Text="{DynamicResource Nickname}"

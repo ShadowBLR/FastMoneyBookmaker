@@ -9,16 +9,17 @@ using System.Windows.Input;
 using System.Linq;
 using System;
 using FastMoneyBookmaker.ViewModels;
+using FastMoneyBookmaker.Models;
 
 namespace FastMoneyBookmaker.ViewModels
 {
     class LoginViewModel : ViewModel, IPageVIewModel
     {
-        private FullUserViewModel userVM;
-        public FullUserViewModel UserVM
+        private User currentUser;
+        public User CurrentUser
         {
-            get => userVM;
-            set => Set(ref userVM, value);
+            get => currentUser;
+            set => Set(ref currentUser, value);
         }
         private MainViewModel mainViewModel;
         public MainViewModel  MainViewModel
@@ -35,7 +36,7 @@ namespace FastMoneyBookmaker.ViewModels
             mainViewModel = parent;
             UserControl = new LoginUI();
             BookmakerContext = bc;
-            UserVM = new FullUserViewModel();
+            currentUser = parent.CurrentUser;
             
         }
 
@@ -78,17 +79,22 @@ namespace FastMoneyBookmaker.ViewModels
         {
 
             PasswordBox passBox = obj as PasswordBox;
+           
             var User = from us in BookmakerContext.Users
                        join p in BookmakerContext.Passports on
                        us.Passport.Id equals p.Id join
                         c in BookmakerContext.Contacts on
                         us.Contact.Id equals c.Id
-                       where us.Nickname==UserVM.User.Nickname
-                       select new { User = us };
+                       where us.Nickname==CurrentUser.Nickname
+                       select new { User = us ,Passport = p,Contact = c};
+        
 
             if (User.Count() != 0)
             {
                 var activeUser = User.First();
+                activeUser.User.Passport = activeUser.Passport;
+                activeUser.User.Contact = activeUser.Contact;
+                
                 HashHelper helper = new HashHelper
                 {
                     Salt = activeUser.User.Salt
@@ -96,6 +102,9 @@ namespace FastMoneyBookmaker.ViewModels
                 helper.Hash = HashHelper.CalculeHashSHA256(passBox.Password, helper.Salt);
                 if (helper.IsEqual(activeUser.User.Hash))
                 {
+
+                    System.Windows.MessageBox.Show("Hash equals");
+                    CurrentUser =mainViewModel.CurrentUser= activeUser.User;
                     if (activeUser.User.IsBlocked)
                     {
                         System.Windows.MessageBox.Show("YOU ARE BLOKED");
@@ -108,6 +117,7 @@ namespace FastMoneyBookmaker.ViewModels
                         }
                         else
                         {
+                            mainViewModel.ListViewModel.Add(new PersonalAccountViewModel(MainViewModel, BookmakerContext));
                             mainViewModel.CurrentPage = new PersonalAccountViewModel(mainViewModel, BookmakerContext);
                         }
                     }
@@ -117,7 +127,7 @@ namespace FastMoneyBookmaker.ViewModels
             {
                 System.Windows.MessageBox.Show("Login or password incorrected");
             }
-            UserVM = new FullUserViewModel();
+              
         }
         private bool CanAuthorizationUser(object obj)
         {

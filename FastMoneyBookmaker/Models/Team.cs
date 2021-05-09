@@ -1,12 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace FastMoneyBookmaker.Models
 {
     class Team
-    {
-        [Key]
+    {  
+        public int Id { get; set; }
         public string Name { get; set; }
-        public Match Match { get; set; }
+        public ICollection<Match> Matches { get; set; }
+        public Team ()
+        {
+            Matches = new ObservableCollection<Match>();
+            Name = "";
+        }
     }
 }

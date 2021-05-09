@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,14 @@ namespace FastMoneyBookmaker.Models
         public string Avatar { get; set; }
         public virtual Passport Passport { get; set; }
         public virtual Contact Contact { get; set; }
-        public virtual List<Bet> Bets { get; set;}
+        public virtual ICollection<Bet> Bets { get; set;}
+        public User()
+        {
+            Passport = new Passport();
+            Contact = new Contact();
+            Bets = new ObservableCollection<Bet>();
+            Nickname = "";
+            Avatar = "";
+        }
     }
 }

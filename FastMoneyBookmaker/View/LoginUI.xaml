@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:FastMoneyBookmaker.View" xmlns:viewmodels="clr-namespace:FastMoneyBookmaker.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
+             xmlns:local="clr-namespace:FastMoneyBookmaker.View" 
+             xmlns:viewmodels="clr-namespace:FastMoneyBookmaker.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
              mc:Ignorable="d" 
              xmlns:mv="clr-namespace:FastMoneyBookmaker.ViewModels"
              d:DesignHeight="450" d:DesignWidth="800"
@@ -91,7 +93,7 @@
 
             <Border>
 
-                <StackPanel Margin="0 15 0 15" DataContext="{Binding UserVM}">
+                <StackPanel Margin="0 15 0 15" DataContext="{Binding CurrentUser}">
                     <Border CornerRadius="10">
                         
                         <Grid>
@@ -107,7 +109,7 @@
                                            Source="/Resources/Icons/home.png"/>
                                     <TextBox x:Name="UsernameBox"
                                                 Grid.Column="1"
-                             Text="{Binding User.Nickname}"
+                             Text="{Binding Path=Nickname}"
                              Style="{StaticResource LTB}"
                             />
                                     

@@ -28,9 +28,8 @@ namespace FastMoneyBookmaker.ViewModels
             MenuList = new List<IPageVIewModel>()
             {
                 new SettingsViewModel(mainVM.mainWnd),
-                new MyProfileViewMode(),
+                new MyProfileViewMode(BookmakerContext, mainVM.CurrentUser),
                 new MatchesViewModel(BookmakerContext,mainVM.CurrentUser),
-                new MyProfileViewMode(),
                 new BetViewModel(context,mainVM.CurrentUser)
             };
 
@@ -53,7 +52,7 @@ namespace FastMoneyBookmaker.ViewModels
             }
         }
         #endregion]
-        #region ShowMyProgileUI
+        #region ShowMyProfileUI
         private RelayCommand showMyProfileUI;
         public ICommand ShowMyProfileUI
         {
@@ -89,6 +88,26 @@ namespace FastMoneyBookmaker.ViewModels
                 }
                 return showMatchesUI;
             }
+        }
+        #endregion
+        #region ShowMyBetsCommand
+        public ICommand ShowMyBetsCommand
+        {
+            get
+            {
+                if (showMyProfileUI == null)
+                {
+                    showMyProfileUI = new RelayCommand(
+                        ShowMyBets,
+                        (obj) => true
+                        );
+                }
+                return showMyProfileUI;
+            }
+        }
+        private void ShowMyBets(object obj)
+        {
+            SelectedVM = MenuList[3];
         }
         #endregion
         #endregion
