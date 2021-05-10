@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -28,7 +29,8 @@ namespace FastMoneyBookmaker
 			m_Languages.Clear();
 			m_Languages.Add(new CultureInfo("en-US")); //Нейтральная культура для этого проекта
 			m_Languages.Add(new CultureInfo("ru-RU"));
-			
+			Thread.CurrentThread.CurrentUICulture = m_Languages[0];
+		
 		}
 
 		public static event EventHandler LanguageChanged;
@@ -52,17 +54,17 @@ namespace FastMoneyBookmaker
 				switch (value.Name)
 				{
 					case "ru-RU":
-						dict.Source = new Uri(String.Format("Resources/Lang.{0}.xaml", value.Name), UriKind.Relative);
+						dict.Source = new Uri(String.Format("Resources/Languages/Lang.{0}.xaml", value.Name), UriKind.Relative);
 						break;
 					default:
-						dict.Source = new Uri("Resources/Lang.xaml", UriKind.Relative);
+						dict.Source = new Uri("Resources/Languages/Lang.xaml", UriKind.Relative);
 						break;
 				}
 
 				//3. Находим старую ResourceDictionary и удаляем его и добавляем новую ResourceDictionary
-				ResourceDictionary oldDict = (from d in Application.Current.Resources.MergedDictionaries
-											  where d.Source != null && d.Source.OriginalString.StartsWith("Resources/lang.")
-											  select d).First();
+				ResourceDictionary oldDict= (from d in Application.Current.Resources.MergedDictionaries
+												  where d.Source != null && d.Source.OriginalString.StartsWith("Resources/lang.")
+												  select d).FirstOrDefault();
 				if (oldDict != null)
 				{
 					int ind = Application.Current.Resources.MergedDictionaries.IndexOf(oldDict);
@@ -78,5 +80,6 @@ namespace FastMoneyBookmaker
 				LanguageChanged(Application.Current, new EventArgs());
 			}
 		}
+		
 	}
 }

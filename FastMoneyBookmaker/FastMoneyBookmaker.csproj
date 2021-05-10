@@ -73,7 +73,6 @@
     <Compile Include="Interfaces\IConverter.cs" />
     <Compile Include="Interfaces\IPageVIewModel.cs" />
     <Compile Include="Models\Bet.cs" />
-    <Compile Include="Models\BetTeam.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Enums\ActionResult.cs" />
     <Compile Include="Models\Enums\Gender.cs" />
@@ -85,6 +84,7 @@
     <Compile Include="Models\Passport.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="ViewModels\AdministratorViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\BetViewModel.cs" />
     <Compile Include="ViewModels\MatchesViewModel.cs" />
@@ -94,6 +94,9 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="View\AdministratorUI.xaml.cs">
+      <DependentUpon>AdministratorUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginUI.xaml.cs">
       <DependentUpon>LoginUI.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,9 @@
     </Compile>
     <Compile Include="View\MyProfile.xaml.cs">
       <DependentUpon>MyProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewMatchUserControl.xaml.cs">
+      <DependentUpon>NewMatchUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PersonalAccountUI.xaml.cs">
       <DependentUpon>PersonalAccountUI.xaml</DependentUpon>
@@ -130,7 +136,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\Languages\Lang.ru-Ru.xaml">
+    <Page Include="Resources\Languages\Lang.ru-RU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\MenuButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdministratorUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MyProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewMatchUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

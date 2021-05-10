@@ -1,11 +1,13 @@
 ﻿
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\App.xaml;;
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\MainWindow.xaml;;
+FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\AdministratorUI.xaml;;
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\LoginUI.xaml;;
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\MatchesUI.xaml;;
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\MessageBox.xaml;;
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\MyBetsUI.xaml;;
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\MyProfile.xaml;;
+FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\NewMatchUserControl.xaml;;
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\PersonalAccountUI.xaml;;
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\Register.xaml;;
 FC:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\View\SettingsUI.xaml;;

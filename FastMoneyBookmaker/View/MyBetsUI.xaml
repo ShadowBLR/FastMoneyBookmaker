@@ -4,21 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FastMoneyBookmaker.View"
+             xmlns:vm="clr-namespace:FastMoneyBookmaker.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=vm:BetViewModel}"
              mc:Ignorable="d" 
-             xmlns:vm="clr-namespsace:FastMoneyBookmaker.ViewModels" 
-             xmlns:viewmodels="clr-namespace:FastMoneyBookmaker.ViewModels" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:BetViewModel}">
+             d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
-        <DataGrid x:Name="MyBets" ItemsSource="{Binding Bets}"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False">
+        <DataGrid ItemsSource="{Binding  Bets}" AutoGenerateColumns="False"
+                  IsReadOnly="True" CanUserAddRows="False" CanUserSortColumns="True"
+                  HorizontalScrollBarVisibility="Disabled" MinRowHeight="30">
             <DataGrid.Columns>
-            <DataGridTextColumn Header="{DynamicResource MyBets}" Binding="{Binding BetId}"/>
-            <DataGridTextColumn Header="{DynamicResource DateOfBet}" Binding="{Binding DateOfBet}"/>
-            <DataGridTextColumn Header="{DynamicResource Cash}" Binding="{Binding Cash}"/>
-            <DataGridTextColumn Header="{DynamicResource StateOfBet}" Binding="{Binding State}"/>
-            <DataGridTextColumn Header="{DynamicResource KindOfSport}" Binding="{Binding Match.KindOfSport}"/>
+            <DataGridTextColumn Header="{DynamicResource Id}" Binding="{Binding BetId}" Width="0.3*"/>
+            <DataGridTextColumn Header="{DynamicResource DateOfBet}" Binding="{Binding DateOfBet}" Width="1*"/>
+            <DataGridTextColumn Header="{DynamicResource Cash}" Binding="{Binding Cash}" Width="1*"/>
+            <DataGridTextColumn Header="{DynamicResource StateOfBet}" Binding="{Binding State}" Width="1*"/>
+            <DataGridTextColumn Header="{DynamicResource KindOfSport}" Binding="{Binding Match.KindOfSport}" Width="1*"/>
         </DataGrid.Columns>
         </DataGrid>
     </Grid>

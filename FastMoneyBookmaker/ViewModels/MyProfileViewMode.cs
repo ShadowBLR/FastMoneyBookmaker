@@ -26,6 +26,7 @@ namespace FastMoneyBookmaker.ViewModels
             get => imagePath;
             set => Set(ref imagePath, value);
         }
+        #region Constructor
         public MyProfileViewMode(BookmakerContext bookmaker,User currentUser)
         {
             CurrentUser = currentUser;
@@ -38,6 +39,8 @@ namespace FastMoneyBookmaker.ViewModels
                               ), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
             }
         }
+        #endregion
+        #region LoadPictureCommand
         private RelayCommand loadPictureCommand;
         public ICommand LoadPictureCommand
         {
@@ -90,6 +93,7 @@ namespace FastMoneyBookmaker.ViewModels
                 System.Windows.MessageBox.Show("ERROR");
             }
         }
-    
+        #endregion
+
     }
 }

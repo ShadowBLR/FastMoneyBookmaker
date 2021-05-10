@@ -40,3 +40,7 @@ C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\Resou
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\FastMoneyBookmaker.csprojAssemblyReference.cache
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\MatchesUI.g.cs
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\MatchesUI.baml
+C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\AdministratorUI.g.cs
+C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\NewMatchUserControl.g.cs
+C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\AdministratorUI.baml
+C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\NewMatchUserControl.baml

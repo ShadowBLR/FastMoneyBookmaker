@@ -92,6 +92,7 @@
                          Foreground="white"
                          FontSize="22"
                          Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding ShowMyBetsUI}"
                          VerticalAlignment="Stretch"/>
             <RadioButton Content="{DynamicResource Matches}"
                          MinHeight="50"

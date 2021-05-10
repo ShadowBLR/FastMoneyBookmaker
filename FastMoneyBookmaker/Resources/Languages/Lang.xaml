@@ -39,4 +39,5 @@
     <v:String x:Key="FirstName">First name</v:String>
     <v:String x:Key="SurName">Sur name</v:String>
     <v:String x:Key="LastName">Last name</v:String>
+    <v:String x:Key="MenuLanguage">Language</v:String>
 </ResourceDictionary>

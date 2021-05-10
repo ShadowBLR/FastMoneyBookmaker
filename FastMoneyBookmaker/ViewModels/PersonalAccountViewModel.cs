@@ -91,18 +91,19 @@ namespace FastMoneyBookmaker.ViewModels
         }
         #endregion
         #region ShowMyBetsCommand
-        public ICommand ShowMyBetsCommand
+        private RelayCommand showMyBetsUI;
+        public ICommand ShowMyBetsUI
         {
             get
             {
-                if (showMyProfileUI == null)
+                if (showMyBetsUI == null)
                 {
-                    showMyProfileUI = new RelayCommand(
+                    showMyBetsUI = new RelayCommand(
                         ShowMyBets,
                         (obj) => true
                         );
                 }
-                return showMyProfileUI;
+                return showMyBetsUI;
             }
         }
         private void ShowMyBets(object obj)

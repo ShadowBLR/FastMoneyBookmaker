@@ -34,23 +34,11 @@
             </StackPanel>
             <CheckBox Content="bla-bla"
                       Foreground="White"/>
-            <ComboBox HorizontalAlignment="Left"
-                      Text="Current language"
-                      SelectedItem="one"
-                      IsSynchronizedWithCurrentItem="True"
-                      SelectedIndex="1"
-                      >
-                <ComboBox.ItemContainerStyle>
-                    <Style TargetType="ComboBoxItem">
-                        <Setter Property="Width" Value="100"/>
-                    </Style>
-                </ComboBox.ItemContainerStyle>
-                <ComboBoxItem Content="Belarussian"/>
-                <ComboBoxItem Content="English" />
-                <ComboBoxItem Content="Francais"/>
-                <ComboBoxItem Content="Russian"/>
-                <ComboBoxItem Content="Spanish"/>
-            </ComboBox>
+           
+            <Menu Width="auto"  HorizontalAlignment="Left">
+                <MenuItem x:Name="menuLanguage" MinWidth="70"
+                          Header="{DynamicResource MenuLanguage}"/>
+            </Menu>
         </StackPanel>
         
     </Grid>

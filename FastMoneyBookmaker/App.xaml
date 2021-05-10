@@ -8,7 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Languages/Lang.xaml" />
+                <ResourceDictionary Source="Resources/Languages/Lang.xaml"/>
                 <ResourceDictionary Source="Resources/Themes/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Resources/Themes/LanguageComboBoxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>

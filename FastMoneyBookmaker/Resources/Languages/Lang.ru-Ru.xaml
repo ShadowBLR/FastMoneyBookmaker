@@ -2,5 +2,42 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
     <v:String x:Key="DateOfBet">Дата ставки</v:String>
-
+    <v:String x:Key="test" >Some text</v:String>
+    <v:String x:Key="Bookmaker_name" >Быстрые деньги</v:String>
+    <v:String x:Key="Authorization">Войти</v:String>
+    <v:String x:Key="ForgotPassword">Забыли пароль?</v:String>
+    <v:String x:Key="Registration">Регистрация</v:String>
+    <v:String x:Key="Nickname">Псевдоним</v:String>
+    <v:String x:Key="Password">Пароль</v:String>
+    <v:String x:Key="HaveAnAccount">Уже есть аккаунт?</v:String>
+    <v:String x:Key="Email">Почта</v:String>
+    <v:String x:Key="All">Все</v:String>
+    <v:String x:Key="StartDate">Дата начала</v:String>
+    <v:String x:Key="MatchResult">Результат матча</v:String>
+    <v:String x:Key="MakeABet">Сделать ставку</v:String>
+    <v:String x:Key="Id">Номер</v:String>
+    <v:String x:Key="FirstTeam">Первая команда</v:String>
+    <v:String x:Key="SecondTeam">Вторая команда</v:String>
+    <v:String x:Key="StateOfBet">Состояние ставки</v:String>
+    <v:String x:Key="LogOut">Выйти</v:String>
+    <v:String x:Key="Cash">Сумма</v:String>
+    <v:String x:Key="BetOn">Ставка на</v:String>
+    <v:String x:Key="YourBets">Ваши ставки</v:String>
+    <v:Int32 x:Key="MatchId">Номер матча</v:Int32>
+    <v:String x:Key="Title">Быстрые деньги</v:String>
+    <v:String x:Key="TeamName">Название команды</v:String>
+    <v:String x:Key="WinRate">Процент побед</v:String>
+    <v:String x:Key="UFC">UFC</v:String>
+    <v:String x:Key="Profile">Профиль</v:String>
+    <v:String x:Key="MyBets">Мои ставки</v:String>
+    <v:String x:Key="Matches">Матчи</v:String>
+    <v:String x:Key="AboutMe">Обо мне</v:String>
+    <v:String x:Key="KindOfSport">Категория</v:String>
+    <v:String x:Key="Settings">Настройки</v:String>
+    <v:String x:Key="Home">Домой</v:String>
+    <v:String x:Key="MyProfile">Мой профиль</v:String>
+    <v:String x:Key="FirstName">Имя</v:String>
+    <v:String x:Key="SurName">Фамилия</v:String>
+    <v:String x:Key="LastName">Отчество</v:String>
+    <v:String x:Key="MenuLanguage">Язык</v:String>
 </ResourceDictionary>

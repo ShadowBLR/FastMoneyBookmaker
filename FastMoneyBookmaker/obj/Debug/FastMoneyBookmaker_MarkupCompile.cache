@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\App.xaml
-13831384542
+15728413570
 
-42-1703633388
+44-1432349429
 161335784773
-MainWindow.xaml;Resources\Languages\Lang.ru-Ru.xaml;Resources\Languages\Lang.xaml;Resources\Themes\LanguageComboBoxTheme.xaml;Resources\Themes\MenuButtonTheme.xaml;View\LoginUI.xaml;View\MatchesUI.xaml;View\MessageBox.xaml;View\MyBetsUI.xaml;View\MyProfile.xaml;View\PersonalAccountUI.xaml;View\Register.xaml;View\SettingsUI.xaml;
+MainWindow.xaml;Resources\Languages\Lang.ru-RU.xaml;Resources\Languages\Lang.xaml;Resources\Themes\LanguageComboBoxTheme.xaml;Resources\Themes\MenuButtonTheme.xaml;View\AdministratorUI.xaml;View\LoginUI.xaml;View\MatchesUI.xaml;View\MessageBox.xaml;View\MyBetsUI.xaml;View\MyProfile.xaml;View\NewMatchUserControl.xaml;View\PersonalAccountUI.xaml;View\Register.xaml;View\SettingsUI.xaml;
 
 False
 
