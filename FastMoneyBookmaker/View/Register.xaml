@@ -79,6 +79,16 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <ControlTemplate x:Key="validationFailed">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="2">
+                    <AdornedElementPlaceholder />
+                </Border>
+                <TextBlock Foreground="Red" FontSize="25" FontWeight="Bold"
+                           Text="!"/>
+
+            </StackPanel>
+        </ControlTemplate>
     </UserControl.Resources>
     <Border HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -87,7 +97,7 @@
             CornerRadius="10">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300" Margin="20">
 
-            <StackPanel DataContext="{Binding CurrentUser}">
+            <StackPanel>
                 <Border>
                     <TextBlock Text="{DynamicResource Registration}"
                                HorizontalAlignment="Center" 
@@ -108,9 +118,18 @@
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
                                             <Image Width="30" Height="30" Source="/Resources/Icons/letter.png"/>
-                                            <TextBox Grid.Column="1" x:Name="EmailBox" Text="{Binding Contact.Email}"
-                                             Style="{StaticResource EmailTB}"/>
-                                        <TextBlock Grid.Column="1" x:Name="EmailTextBlock"
+                                            <TextBox Grid.Column="1" x:Name="EmailBox" 
+                                             Style="{StaticResource EmailTB}"
+                                             Validation.ErrorTemplate="{StaticResource validationFailed}">
+                                                <TextBox.Text>
+                                                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <DataErrorValidationRule />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                            </TextBox>
+                                            <TextBlock Grid.Column="1" x:Name="EmailTextBlock"
                                                    Text="{DynamicResource Email}"
                                                    VerticalAlignment="Center"
                                                    FontSize="14"
@@ -144,9 +163,17 @@
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
                                             <Image Grid.Column="0" Height="32" Width="32" HorizontalAlignment="Left" Source="/Resources/Icons/home.png" />
-                                            <TextBox Grid.Column="1" x:Name="UsernameBox" Text="{Binding Nickname, UpdateSourceTrigger=PropertyChanged, 
-                        ValidatesOnDataErrors=true, NotifyOnValidationError=true}"
-                                             Style="{StaticResource EmailTB}"/>
+                                            <TextBox Grid.Column="1" x:Name="UsernameBox" 
+                                             Style="{StaticResource EmailTB}"
+                                                     Validation.ErrorTemplate="{StaticResource validationFailed}">
+                                                <TextBox.Text>
+                                                    <Binding Path="Nickname" UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <DataErrorValidationRule/>
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                            </TextBox>
                                             <TextBlock Grid.Column="1" Text="{DynamicResource Nickname}"
                                                    VerticalAlignment="Center"
                                                    Padding="12,0,0,0"

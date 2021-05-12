@@ -109,6 +109,7 @@
                                            Source="/Resources/Icons/home.png"/>
                                     <TextBox x:Name="UsernameBox"
                                                 Grid.Column="1"
+                                            Text="{Binding Nickname}"
                              Style="{StaticResource LTB}"
                             />
                                     

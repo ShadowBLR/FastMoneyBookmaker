@@ -8,7 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Languages/Lang.xaml"/>
+                <ResourceDictionary x:Name="LangDictionary" Source="Resources/Languages/Lang.xaml"/>
                 <ResourceDictionary Source="Resources/Themes/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Resources/Themes/LanguageComboBoxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -32,6 +32,12 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm:BetViewModel}">
                 <view:MyBetsUI/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AdministratorViewModel}">
+                <view:AdministratorUI/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:BalanceViewModel}">
+                <view:BalanceUI/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FastMoneyBookmaker.View
 {
     /// <summary>
-    /// Логика взаимодействия для AdministratorUI.xaml
+    /// Логика взаимодействия для BalanceUI.xaml
     /// </summary>
-    public partial class AdministratorUI : UserControl
+    public partial class BalanceUI : UserControl
     {
-        public AdministratorUI()
+        public BalanceUI()
         {
             InitializeComponent();
         }

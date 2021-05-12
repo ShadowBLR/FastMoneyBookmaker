@@ -4,18 +4,42 @@ using FastMoneyBookmaker.Helpers;
 using FastMoneyBookmaker.Interfaces;
 using FastMoneyBookmaker.Models;
 using System;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FastMoneyBookmaker.ViewModels
 {
-    class RegisterViewModel: ViewModel,IPageVIewModel
+    class RegisterViewModel: ViewModel,IPageVIewModel,IDataErrorInfo
     {
-        private BookmakerContext bmContext { get; }
-        public User CurrentUser { get; set; }
+        private BookmakerContext bmContext;
+        public BookmakerContext BmContext
+        {
+            get => bmContext;
+            set => Set(ref bmContext, value);
+        }
+        private User currentUser;
+        public User CurrentUser
+        {
+            get => currentUser;
+            set => Set(ref currentUser, value);
+        }
+        private string nickname;
+        public string Nickname
+        {
+            get => nickname;
+            set => Set(ref nickname, value);
+        }
+        private string email;
+        public string Email
+        {
+            get => email;
+            set => Set(ref email, value);
+        }
         private MainViewModel mainViewModel;
         public MainViewModel MainViewModel
         {
@@ -41,13 +65,12 @@ namespace FastMoneyBookmaker.ViewModels
         {
             if (obj is PasswordBox passBox)
             { 
-                string nick = CurrentUser.Nickname;
-                string email = CurrentUser.Contact.Email;
+                
                 if (IsValidPassword(passBox.Password))
                 {
-                    if (IsNotExistsEmailInDB(email))
+                    if (IsNotExistsEmailInDB(Email))
                     {
-                        if (IsNotExistsNicknameInDB(nick))
+                        if (IsNotExistsNicknameInDB(Nickname))
                         {
 
                             HashHelper hashHelper = new HashHelper
@@ -58,10 +81,10 @@ namespace FastMoneyBookmaker.ViewModels
 
                             User usr = new User
                             {
-                                Nickname = nick,
+                                Nickname = Nickname,
                                 Hash = hashHelper.Hash,
                                 Salt = hashHelper.Salt,
-                                Contact = new Contact { Email = email },
+                                Contact = new Contact { Email = Email },
                                 Passport = new Passport { DateOfBIrth=DateTime.Now}
                             };
                             bmContext.Users.Add(usr);
@@ -89,7 +112,7 @@ namespace FastMoneyBookmaker.ViewModels
         }
         private bool IsNotExistsNicknameInDB(string nickname)
         {
-            var res = from u in bmContext.Users
+            var res = from u in BmContext.Users
                       where u.Nickname == nickname
                       select u;
             if (res.Count()!=1)
@@ -104,7 +127,7 @@ namespace FastMoneyBookmaker.ViewModels
         }
         private bool IsNotExistsEmailInDB(string email)
         {
-            var res = from cont in bmContext.Contacts
+            var res = from cont in BmContext.Contacts
                           where cont.Email == email
                           select cont;
             if (res.Count()==0)
@@ -131,7 +154,7 @@ namespace FastMoneyBookmaker.ViewModels
         public RegisterViewModel(MainViewModel parent,BookmakerContext context)
         {
             mainViewModel = parent;
-            bmContext = context;
+            BmContext = context;
             CurrentUser = new User();
         }
         public RegisterViewModel( )
@@ -154,6 +177,59 @@ namespace FastMoneyBookmaker.ViewModels
                 }
                 return goToLoginViewCommand;
             }
+        }
+        #endregion
+        #region Validation
+        public string Error
+        {
+            get 
+            { 
+                throw new NotImplementedException(); 
+            }
+        }
+
+    public string this[string columnName]
+        {
+            get
+            {
+                string result=string.Empty;
+                switch(columnName)
+                {
+                    case "Nickname":
+                            result = ValidationNickname(result);
+                            break;
+                    case "Email":
+                            result = ValidationEmail(result);
+                            break;
+                }
+                return result;
+            }
+        }
+        private string ValidationNickname(string err)
+        {
+            Regex rule = new Regex(@"^[a-zA-Z0-9]{6,16}$");
+            if(string.IsNullOrEmpty(Nickname))
+            {
+                err = "string is empty";
+            }
+            else if(!rule.IsMatch(Nickname))
+            {
+                err = "Only latin and number";
+            }
+            return err;
+        }
+        private string ValidationEmail(string err)
+        {
+            Regex rule = new Regex(@"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
+            if (string.IsNullOrEmpty(Email))
+            {
+                err = "this field is required";
+            }
+            else if(!rule.IsMatch(Email))
+            {
+                err = "Incorrected email";
+            }
+            return err;
         }
         #endregion
     }

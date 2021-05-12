@@ -113,12 +113,16 @@ namespace FastMoneyBookmaker.ViewModels
                     {
                         if (activeUser.User.IsAdministrator)
                         {
-                            System.Windows.MessageBox.Show("Show admin view");
+                            AdministratorViewModel admin = new AdministratorViewModel(BookmakerContext);
+                            mainViewModel.ListViewModel.Add(admin);
+                            mainViewModel.CurrentPage = mainViewModel.ListViewModel[mainViewModel.ListViewModel.IndexOf(admin)];
+                            
                         }
                         else
                         {
-                            mainViewModel.ListViewModel.Add(new PersonalAccountViewModel(MainViewModel, BookmakerContext));
-                            mainViewModel.CurrentPage = new PersonalAccountViewModel(mainViewModel, BookmakerContext);
+                            PersonalAccountViewModel personal = new PersonalAccountViewModel(MainViewModel, BookmakerContext);
+                            mainViewModel.ListViewModel.Add(personal);
+                            mainViewModel.CurrentPage = mainViewModel.ListViewModel[mainViewModel.ListViewModel.IndexOf(personal)];
                         }
                     }
                 }

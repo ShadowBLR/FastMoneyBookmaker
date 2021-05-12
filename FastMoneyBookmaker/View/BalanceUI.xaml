@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="FastMoneyBookmaker.View.BalanceUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FastMoneyBookmaker.View" xmlns:viewmodels="clr-namespace:FastMoneyBookmaker.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:BalanceViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid VerticalAlignment="Top">
+        <StackPanel Margin="20,10,20,20">
+            <TextBlock Text="{DynamicResource Sum}"
+                       MinHeight="30"
+                       FontSize="24"/>
+            <TextBox MinHeight="30"
+                     FontSize="24"
+                     x:Name="pOpTB"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Put" MinHeight="30"
+                        Command="{Binding PutMoneyCommand}"
+                        CommandParameter="pOpTB"/>
+                <Button Grid.Column="2" Content="Output"
+                        Command="{Binding OutputMoneyCommand}"
+                        CommandParameter="pOpTB"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

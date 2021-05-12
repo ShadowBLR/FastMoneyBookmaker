@@ -1,6 +1,7 @@
 ﻿using CourseWork.ViewModels.Base;
 using FastMoneyBookmaker.Commands.Base;
 using FastMoneyBookmaker.Interfaces;
+using FastMoneyBookmaker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace FastMoneyBookmaker.ViewModels
     class PersonalAccountViewModel : ViewModel, IPageVIewModel
     {
         private MainViewModel mainVM;
+        private User currentUser;
+        public User CurrentUser
+        {
+            get => currentUser;
+            set => Set(ref currentUser, value);
+        }
         public BookmakerContext BookmakerContext { get; set; }
         public List<IPageVIewModel> MenuList { get; set; }
         private IPageVIewModel selectedVM;
@@ -25,12 +32,14 @@ namespace FastMoneyBookmaker.ViewModels
         {
             mainVM = parent;
             BookmakerContext = context;
+            CurrentUser = mainVM.CurrentUser;
             MenuList = new List<IPageVIewModel>()
             {
                 new SettingsViewModel(mainVM.mainWnd),
                 new MyProfileViewMode(BookmakerContext, mainVM.CurrentUser),
                 new MatchesViewModel(BookmakerContext,mainVM.CurrentUser),
-                new BetViewModel(context,mainVM.CurrentUser)
+                new BetViewModel(context,mainVM.CurrentUser),
+                new BalanceViewModel(context,mainVM.CurrentUser)
             };
 
         }
@@ -109,6 +118,23 @@ namespace FastMoneyBookmaker.ViewModels
         private void ShowMyBets(object obj)
         {
             SelectedVM = MenuList[3];
+        }
+        #endregion
+        #region ShowBalanceUI
+        private RelayCommand showBalanceUICommand;
+        public ICommand ShowBalanceUICommand
+        {
+            get
+            {
+                if (showBalanceUICommand == null)
+                    showBalanceUICommand = new RelayCommand(ShowBalanceUI,CanShowBalanceUI);
+                return showBalanceUICommand;
+            }
+        }
+        private bool CanShowBalanceUI(object obj) => true;
+        private void ShowBalanceUI(object obj)
+        {
+            SelectedVM = MenuList[4];
         }
         #endregion
         #endregion

@@ -67,8 +67,10 @@
     </ApplicationDefinition>
     <Compile Include="Commands\Base\Command.cs" />
     <Compile Include="Commands\Base\RelayCommand.cs" />
+    <Compile Include="Converters\StringToBooleanConverter.cs" />
     <Compile Include="Database\BookmakerContext.cs" />
     <Compile Include="Converters\ByteArryaToImageConverter.cs" />
+    <Compile Include="Helpers\EnumExtension.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Interfaces\IConverter.cs" />
     <Compile Include="Interfaces\IPageVIewModel.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\AdministratorViewModel.cs" />
+    <Compile Include="ViewModels\BalanceViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\BetViewModel.cs" />
     <Compile Include="ViewModels\MatchesViewModel.cs" />
@@ -96,6 +99,9 @@
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="View\AdministratorUI.xaml.cs">
       <DependentUpon>AdministratorUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BalanceUI.xaml.cs">
+      <DependentUpon>BalanceUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginUI.xaml.cs">
       <DependentUpon>LoginUI.xaml</DependentUpon>
@@ -153,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AdministratorUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BalanceUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

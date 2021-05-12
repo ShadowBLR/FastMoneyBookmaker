@@ -40,4 +40,15 @@
     <v:String x:Key="SurName">Фамилия</v:String>
     <v:String x:Key="LastName">Отчество</v:String>
     <v:String x:Key="MenuLanguage">Язык</v:String>
+    <v:String x:Key="Command">Команда</v:String>
+    <v:String x:Key="CoefficientOnCommand">Коэффициент на команду</v:String>
+    <v:String x:Key="Add">Добавить</v:String>
+    <v:String x:Key="Users">Пользователи</v:String>
+    <v:String x:Key="Balance">Баланс</v:String>
+    <v:String x:Key="Administrator">Администратор</v:String>
+    <v:String x:Key="Blocked">Заблокирован</v:String>
+    <v:String x:Key="Confirmed">Подтвержден</v:String>
+    <v:String x:Key="Put">Пополнить</v:String>
+    <v:String x:Key="Output">Вывести</v:String>
+    <v:String x:Key="Sum">Сумма</v:String>
 </ResourceDictionary>
