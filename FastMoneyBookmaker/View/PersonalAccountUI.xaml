@@ -82,7 +82,7 @@
             </StackPanel>
             
         </Grid>
-        <StackPanel Grid.Row="1" Background="#2e2c2c"
+        <StackPanel Grid.Row="1" Background="Black"
                     Height="auto"
                     VerticalAlignment="Stretch"
                     >
@@ -130,21 +130,31 @@
                          FontSize="22"
                          Style="{StaticResource MenuButtonTheme}"
                          Command="{Binding ShowSettingsUI}"/>
-            <RadioButton Content="{DynamicResource LogOut}"
-                          MinHeight="50"
-                         MaxHeight="100"
-                         Foreground="white"
-                         FontSize="22"
-                         DataContext="{Binding Path= mai }"
-                         Style="{StaticResource MenuButtonTheme}"
-                         Command="{LogOutCommand}"
-                         />
         </StackPanel>
+                 <Button Background="Transparent" VerticalAlignment="Bottom"
+                         Command="{Binding MainVM.LogOutCommand}"
+                         Grid.Row="1">
+               
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock 
+                                   Foreground="White"
+                                   FontSize="22"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   />
+                        <Image Source="/Resources/Icons/door.png" Grid.Column="1"
+                               MaxHeight="64" MaxWidth="64"
+                               VerticalAlignment="Center"
+                       />
+                    </StackPanel>
+            </Button>
         <Grid Grid.Row="1" Grid.Column="1"
                 Background="#2e2c2c"
               >
             
             <ContentControl Content="{Binding SelectedVM}"
+                            Background="#2e2c2c"
                            />
         </Grid>
     </Grid>

@@ -13,7 +13,9 @@
                        FontSize="24"/>
             <TextBox MinHeight="30"
                      FontSize="24"
-                     x:Name="pOpTB"/>
+                     x:Name="pOpTB"
+                     Style="{StaticResource TextBoxData}"
+                     />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -22,11 +24,15 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" Content="Put" MinHeight="30"
                         Command="{Binding PutMoneyCommand}"
-                        CommandParameter="pOpTB"/>
+                        CommandParameter="{Binding ElementName=pOpTB}"
+                        Style="{StaticResource BaseButtonTheme}"/>
                 <Button Grid.Column="2" Content="Output"
                         Command="{Binding OutputMoneyCommand}"
-                        CommandParameter="pOpTB"/>
+                        CommandParameter="{Binding ElementName=pOpTB}"
+                        Style="{StaticResource BaseButtonTheme}"
+                        />
             </Grid>
         </StackPanel>
+       
     </Grid>
 </UserControl>

@@ -14,6 +14,14 @@ namespace FastMoneyBookmaker.ViewModels
 {
     class AdministratorViewModel:ViewModel,IPageVIewModel
     {
+        #region MainVM
+        private MainViewModel mainVM;
+        public MainViewModel MainVM
+        {
+            get => mainVM;
+            set => Set(ref mainVM, value);
+        }
+        #endregion
         #region admin
         private User admin;
         public User Admin
@@ -99,12 +107,15 @@ namespace FastMoneyBookmaker.ViewModels
             set => Set(ref catrgory, value);
         }
         #region Constructor
-        public AdministratorViewModel(BookmakerContext bookmakerContext)
+        public AdministratorViewModel(BookmakerContext bookmakerContext,MainViewModel mainViewModel)
         {
             context = bookmakerContext;
+            mainVM = mainViewModel;
+
             Teams = bookmakerContext.Teams.Local;
             Matches = bookmakerContext.Matches.Local;
             Users = bookmakerContext.Users.Local;
+            
         }
         #endregion
         #region addMatchCommand

@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   
+    <Style TargetType="{x:Type DataGridRow}" x:Key="DataGridRow">
+        <Setter Property="Foreground" Value="#FFB3B3"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="red"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+            <EventTrigger RoutedEvent="DataGrid.GotFocus">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="green" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="DataGrid.LostFocus">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="red" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

@@ -35,7 +35,18 @@ namespace FastMoneyBookmaker.ViewModels
         {
            CurrentUser =user ;
            this.context = context;
-            Matches = context.Matches.Local;
+            var result = from m in context.Matches
+                         join t in context.Teams
+                         on m.Teams.FirstOrDefault().Id equals
+                         t.Id group  m by  m.Id;
+            foreach(IGrouping<int,Match> _matches in result)
+            {
+                foreach(var t in _matches)
+                {
+                   System.Windows.MessageBox.Show(t.Teams.FirstOrDefault().Name);
+                }
+            }
+           // Matches = context.Matches.Local;
            
         }
     }

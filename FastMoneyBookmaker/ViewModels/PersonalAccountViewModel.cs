@@ -14,6 +14,11 @@ namespace FastMoneyBookmaker.ViewModels
     class PersonalAccountViewModel : ViewModel, IPageVIewModel
     {
         private MainViewModel mainVM;
+        public MainViewModel MainVM
+        {
+            get => mainVM;
+            set => Set(ref mainVM, value);
+        }
         private User currentUser;
         public User CurrentUser
         {

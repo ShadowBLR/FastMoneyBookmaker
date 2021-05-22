@@ -6,17 +6,41 @@
         xmlns:local="clr-namespace:FastMoneyBookmaker"
         xmlns:cmd="clr-namespace:FastMoneyBookmaker.Commands"
         xmlns:view="clr-namespace:FastMoneyBookmaker.View"
-        xmlns:vm="clr-namespace:FastMoneyBookmaker.ViewModels" d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
+        xmlns:vm="clr-namespace:FastMoneyBookmaker.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         mc:Ignorable="d"
         Title="{StaticResource Title}" MinWidth="250" MinHeight="350" 
         Icon="Resources/Icons/SoccerBall.png"
+        Name="Main"
         >
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding DoFullScreenCommand}"
+                    Modifiers="Alt"
+                     Key="E"
+                    CommandParameter="Main"
+                    />
+        <KeyBinding Command="{Binding DoNormalScreenCommand}"
+                    Key="Esc"
+                    CommandParameter="Main"/>
+    </Window.InputBindings>
     <Grid Background="#141111">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
 
-        <ContentControl Content="{Binding CurrentPage}" Grid.Row="1"/>
+        <ContentControl
+            Content="{Binding CurrentPage}" Grid.Row="1">
+            <ContentControl.InputBindings>
+                <KeyBinding Command="{Binding DoFullScreenCommand}"
+                    Modifiers="Alt"
+                     Key="E"
+                    CommandParameter="Main"
+                    />
+                <KeyBinding Command="{Binding DoNormalScreenCommand}"
+                    Key="Esc"
+                    CommandParameter="Main"/>
+            </ContentControl.InputBindings>
+        </ContentControl>
     </Grid>
 </Window>

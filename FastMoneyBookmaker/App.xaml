@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:FastMoneyBookmaker.ViewModels"
              xmlns:view="clr-namespace:FastMoneyBookmaker.View"
              xmlns:local="clr-namespace:FastMoneyBookmaker"
+             xmlns:converters="clr-namespace:FastMoneyBookmaker.Converters"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -11,6 +12,11 @@
                 <ResourceDictionary x:Name="LangDictionary" Source="Resources/Languages/Lang.xaml"/>
                 <ResourceDictionary Source="Resources/Themes/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Resources/Themes/LanguageComboBoxTheme.xaml"/>
+                <ResourceDictionary Source="Resources/Themes/ValidationFailedTheme.xaml"/>
+                <ResourceDictionary Source="Resources/Themes/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="Resources/Themes/TextBlockTheme.xaml"/>
+                <ResourceDictionary Source="Resources/Themes/ButtonTheme.xaml"/>
+                <ResourceDictionary Source="Resources/Themes/DataGridRowTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type vm:MyProfileViewMode}">
                 <view:MyProfile/>

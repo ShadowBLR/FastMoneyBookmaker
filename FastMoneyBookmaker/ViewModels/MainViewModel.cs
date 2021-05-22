@@ -5,6 +5,7 @@ using FastMoneyBookmaker.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using System.Windows;
 
 namespace FastMoneyBookmaker.ViewModels
 {
@@ -75,6 +76,51 @@ namespace FastMoneyBookmaker.ViewModels
             CurrentPage = ListViewModel[0];
         }
         #endregion
-
+        #region DoFullScreenCommand
+        private RelayCommand doFullScreenCommand;
+        public ICommand DoFullScreenCommand
+        {
+            get
+            {
+                if(doFullScreenCommand==null)
+                {
+                    doFullScreenCommand = new RelayCommand(DoFullScreen, CanDoFullScreen);
+                }
+                return doFullScreenCommand;
+            }
+        }
+        private bool CanDoFullScreen(object obj) => true;
+        private void DoFullScreen(object obj)
+        {
+            if(obj is Window main)
+            {
+                main.WindowStyle = WindowStyle.SingleBorderWindow;
+                main.WindowState = WindowState.Normal;
+            }
+        }
+        #endregion
+        #region DoNormalScreenCommand
+        private RelayCommand doNormalScreenCommand;
+        public ICommand DoNormalScreenCommand
+        {
+            get
+            {
+                if(doNormalScreenCommand==null)
+                {
+                    doNormalScreenCommand = new RelayCommand(DoNormalScreen, CanDoNormalScreen);
+                }
+                return doNormalScreenCommand;
+            }
+        }
+        private bool CanDoNormalScreen(object obj) => true;
+        private void DoNormalScreen(object obj)
+        {
+            if(obj is Window main)
+            {
+                main.WindowStyle = WindowStyle.None;
+                main.WindowState = WindowState.Maximized;
+            }
+        }
+        #endregion
     }
 }

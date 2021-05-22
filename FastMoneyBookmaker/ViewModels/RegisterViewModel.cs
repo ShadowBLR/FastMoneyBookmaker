@@ -134,16 +134,6 @@ namespace FastMoneyBookmaker.ViewModels
                 return true;
             return false;
         }
-        private bool IsAllFill(params string [] str)
-        {
-            bool rc = true;
-            foreach(string s in str)
-            {
-                if (String.IsNullOrEmpty(s))
-                    rc = false;
-            }
-            return rc; 
-        }
         private  bool CanRegisterUser(object obj)
         {
             return obj is PasswordBox passwordBox &&
@@ -207,7 +197,7 @@ namespace FastMoneyBookmaker.ViewModels
         }
         private string ValidationNickname(string err)
         {
-            Regex rule = new Regex(@"^[a-zA-Z0-9]{6,16}$");
+            Regex rule = new Regex(@"^[a-zA-Z0-9]{4,16}$");
             if(string.IsNullOrEmpty(Nickname))
             {
                 err = "string is empty";

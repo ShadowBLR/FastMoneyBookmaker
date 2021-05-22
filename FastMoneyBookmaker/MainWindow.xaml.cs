@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Windows;
 using FastMoneyBookmaker.View;
 using System;
+using System.Windows.Input;
 
 namespace FastMoneyBookmaker
 {
@@ -24,11 +25,14 @@ namespace FastMoneyBookmaker
             InitializeComponent();
             MainViewModel mainView = new MainViewModel(Bk,this);
             this.DataContext = mainView;
+        
            
         }
         ~MainWindow()
         {
             Bk.Dispose();
         }
+
+    
     }
 }

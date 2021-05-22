@@ -52,9 +52,12 @@ namespace FastMoneyBookmaker.ViewModels
             {
                 if (decimal.TryParse(tb.Text, out decimal money))
                 {
-                    if (CurrentUser.Balance + money > money)
+                    money = Math.Round(money, 2);
+                    if (!(CurrentUser.Balance + money < money)&&(CurrentUser.Balance+money <
+                        decimal.MaxValue))
                     {
                         CurrentUser.Balance += money;
+                        BookmakerContext.Entry(CurrentUser).State = System.Data.Entity.EntityState.Modified;
                         BookmakerContext.SaveChanges();
                         System.Windows.MessageBox.Show("Succes");
                     }
@@ -91,13 +94,14 @@ namespace FastMoneyBookmaker.ViewModels
                 {
                     if (decimal.TryParse(tb.Text, out decimal money))
                     {
+                        money = Math.Round(money, 2);
                         if (CurrentUser.Balance < money)
                         {
                             System.Windows.MessageBox.Show("There are not enough funds in the account");
                         }
                         else
                         {
-                            CurrentUser.Balance -= money;
+                            CurrentUser.Balance -=money;
                             BookmakerContext.SaveChanges();
                             System.Windows.MessageBox.Show("Succes");
                         }

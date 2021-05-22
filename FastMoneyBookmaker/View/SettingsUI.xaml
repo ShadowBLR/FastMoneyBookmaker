@@ -23,7 +23,6 @@
                            Foreground="White"/>
                 <CheckBox  HorizontalAlignment="Right"
                            VerticalAlignment="Center"
-                           
                   x:Name="CB"
                   Command="{Binding DoFullScreen}"
                   CommandParameter="{Binding ElementName=CB}"

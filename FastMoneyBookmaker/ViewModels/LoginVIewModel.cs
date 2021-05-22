@@ -10,16 +10,29 @@ using System.Linq;
 using System;
 using FastMoneyBookmaker.ViewModels;
 using FastMoneyBookmaker.Models;
+using System.ComponentModel;
 
 namespace FastMoneyBookmaker.ViewModels
 {
-    class LoginViewModel : ViewModel, IPageVIewModel
+    class LoginViewModel : ViewModel, IPageVIewModel,IDataErrorInfo
     {
         private User currentUser;
         public User CurrentUser
         {
             get => currentUser;
             set => Set(ref currentUser, value);
+        }
+        private string login;
+        public string Login
+        {
+            get => login;
+            set => Set(ref login, value);
+        }
+        private bool hasErrorLogin;
+        public bool HasErrorLogin
+        {
+            get => hasErrorLogin;
+            set => Set(ref hasErrorLogin, value);
         }
         private MainViewModel mainViewModel;
         public MainViewModel  MainViewModel
@@ -77,7 +90,7 @@ namespace FastMoneyBookmaker.ViewModels
         }
         private void AuthorizationUser(object obj)
         {
-
+            
             PasswordBox passBox = obj as PasswordBox;
            
             var User = from us in BookmakerContext.Users
@@ -113,7 +126,7 @@ namespace FastMoneyBookmaker.ViewModels
                     {
                         if (activeUser.User.IsAdministrator)
                         {
-                            AdministratorViewModel admin = new AdministratorViewModel(BookmakerContext);
+                            AdministratorViewModel admin = new AdministratorViewModel(BookmakerContext,MainViewModel);
                             mainViewModel.ListViewModel.Add(admin);
                             mainViewModel.CurrentPage = mainViewModel.ListViewModel[mainViewModel.ListViewModel.IndexOf(admin)];
                             
@@ -135,18 +148,19 @@ namespace FastMoneyBookmaker.ViewModels
         }
         private bool CanAuthorizationUser(object obj)
         {
+            bool valid = false;
             if (obj is PasswordBox passwordBox)
             {
-                bool valid = true;
+                CurrentUser.Nickname = Login;
+                 
                 Regex passwordPattern = new Regex(@"^[0-9a-zA-Z_*]{6,32}$");
-                if (string.IsNullOrEmpty(passwordBox.Password) ||
-                    !passwordPattern.IsMatch(passwordBox.Password))
+                if (!string.IsNullOrEmpty(passwordBox.Password) &&
+                    passwordPattern.IsMatch(passwordBox.Password))
                 {
-                    valid = false;
+                    valid = true;
                 }
-                return valid;
             }
-            return false;
+            return valid;
         }
         #endregion
         #region GoToPersonalAccountView
@@ -169,8 +183,39 @@ namespace FastMoneyBookmaker.ViewModels
            
         }
         #endregion
-        #endregion
-        
 
-}
+        #endregion
+        #region IDataErrorInfo
+        public string Error => throw new NotImplementedException();
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = String.Empty;
+                switch (columnName)
+                {
+                    case "Login":
+                        {
+                            if (string.IsNullOrEmpty(Login))
+                                error = "Empty login";
+                            else
+                            {
+                                if (Login.Length > 16 || Login.Length < 4)
+                                    error = "Unsuitable length";
+                                else
+                                {
+                                    Regex regex = new Regex(@"^[A-Za-z0-9_]*$");
+                                    if (!regex.IsMatch(Login))
+                                        error = "Only latin, numbers and _";
+                                }
+                            }
+                            break;
+                        }
+                }
+                return error;
+            }
+        }
+        #endregion
+
+    }
 }

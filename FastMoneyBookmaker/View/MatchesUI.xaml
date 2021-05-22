@@ -8,11 +8,15 @@
              d:DataContext="{d:DesignInstance Type=vm:MatchesViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+     
+    </UserControl.Resources>
     <Grid>
         <DataGrid ItemsSource="{Binding Matches}" AutoGenerateColumns="False"
                   IsReadOnly="True" CanUserAddRows="False" CanUserSortColumns="True"
                   HorizontalScrollBarVisibility="Disabled" MinRowHeight="30"
                   >
+            <DataGridRow Style="{StaticResource DataGridRow}"/>
             <DataGrid.Columns >
                 <DataGridTextColumn Header="{DynamicResource Id}" Binding="{Binding Path=Id}" Width="0.3*"/>
                 <DataGridTextColumn Header="{DynamicResource KindOfSport}" Binding="{Binding Path=KindOfSport}" Width="1*"/>

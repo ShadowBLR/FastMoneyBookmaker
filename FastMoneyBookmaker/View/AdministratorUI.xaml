@@ -6,25 +6,52 @@
       xmlns:local="clr-namespace:FastMoneyBookmaker.View"
       mc:Ignorable="d" 
       xmlns:conv="clr-namespace:FastMoneyBookmaker.Converters"
-      d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:viewmodels="clr-namespace:FastMoneyBookmaker.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:AdministratorViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800"
       >
     <UserControl.Resources>
         <conv:StringToBooleanConverter x:Key="StringToBoolean"/>
+        <Style TargetType="{x:Type DataGridRow}" x:Key="STYLE1">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="red"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
         <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
+        <Button Background="Transparent" VerticalAlignment="Bottom"
+                         Command="{Binding MainVM.LogOutCommand}"
+                         Grid.Row="1">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                                   Foreground="White"
+                                   FontSize="22"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   />
+                <Image Source="/Resources/Icons/door.png" Grid.Column="1"
+                               MaxHeight="64" MaxWidth="64"
+                               VerticalAlignment="Center"
+                       />
+            </StackPanel>
+        </Button>
         <Button Content="Refresh" Command="{Binding SaveChangesCommand}"
                 VerticalAlignment="Center"/>
-        <TabControl Grid.Column="1">
-            <TabItem Header="{DynamicResource Matches}">
+        
+            <TabControl Grid.Column="1">
+          
+                <TabItem Header="{DynamicResource Matches}">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                    <StackPanel>
                     <DataGrid ItemsSource="{Binding Matches}" AutoGenerateColumns="False"
                   IsReadOnly="True" CanUserAddRows="False" CanUserSortColumns="True"
                   HorizontalScrollBarVisibility="Disabled" MinRowHeight="30"
@@ -36,23 +63,44 @@
                             <DataGridTextColumn Header="{DynamicResource TeamName}" Binding="{Binding Teams[1].Name}" Width="1*"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <TextBlock Grid.Row="1" Text="Create new match"/>
-                    <local:NewMatchUserControl Grid.Row="1"/>
-                </Grid>
-            </TabItem>
+                  
+                    <local:NewMatchUserControl />
+
+                     </StackPanel>
+    </Grid>
+    </TabItem>
             <TabItem Header="{DynamicResource Users}">
                 <DataGrid ItemsSource="{Binding Users}" AutoGenerateColumns="False"
                   IsReadOnly="False" CanUserAddRows="False" CanUserSortColumns="True"
                   HorizontalScrollBarVisibility="Disabled" MinRowHeight="30"
+                          Name="MeDataGrid"
                   >
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridRow}" x:Key="Style1">
+                            <Setter Property="Background" Value="Red" />
+                        </Style>
+                        <Style TargetType="{x:Type DataGridRow}" x:Key="Style2">
+                            <Setter Property="Background" Value="Green" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Style>
+                        <Style TargetType="{x:Type DataGrid}">
+                            <Setter Property="RowStyle" Value="{StaticResource Style1}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=MyDataGrid, Path=DataContext.IsInLiveMode}" Value="True">
+                                    <Setter Property="RowStyle" Value="{StaticResource Style2}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.Style>
                     <DataGrid.Columns >
-                        <DataGridTextColumn Header="{DynamicResource Id}" Binding="{Binding Path=Id}" Width="0.3*"/>
-                        <DataGridTextColumn Header="{DynamicResource Nickname}" Binding="{Binding Path=Nickname}" Width="1*"/>
+                        <DataGridTextColumn Header="{DynamicResource Id}" IsReadOnly="True" Binding="{Binding Path=Id}" Width="0.3*"/>
+                        <DataGridTextColumn Header="{DynamicResource Nickname}" IsReadOnly="True" Binding="{Binding Path=Nickname}" Width="1*"/>
                         <DataGridTextColumn Header="{DynamicResource Balance}" Binding="{Binding Path=Balance}" Width="1*"/>
                         <DataGridCheckBoxColumn IsReadOnly="False" Header="{DynamicResource Administrator}" Binding="{Binding Path=IsAdministrator,Mode=TwoWay}" Width="1*"/>
                         <DataGridCheckBoxColumn IsReadOnly="False" Header="{DynamicResource Blocked}" Binding="{Binding Path=IsBlocked,Mode=TwoWay}" Width="1*"/>
                         <DataGridCheckBoxColumn IsReadOnly="False" Header="{DynamicResource Confirmed}" Binding="{Binding Path=IsConfirmed,Mode=TwoWay}" Width="1*"/>
-                        <DataGridTextColumn Header="{DynamicResource Email}" Binding="{Binding Path=Contact.Email}" Width="1*"/>
+                        <DataGridTextColumn Header="{DynamicResource Email}" IsReadOnly="True" Binding="{Binding Path=Contact.Email}" Width="1*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 

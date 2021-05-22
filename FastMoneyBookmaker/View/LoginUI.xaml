@@ -7,10 +7,12 @@
              xmlns:viewmodels="clr-namespace:FastMoneyBookmaker.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
              mc:Ignorable="d" 
+             xmlns:converters="clr-namespace:FastMoneyBookmaker.Converters"
              xmlns:mv="clr-namespace:FastMoneyBookmaker.ViewModels"
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#141111">
     <UserControl.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
         <Style x:Key="LTB" TargetType="TextBox">
             <Setter Property="Background" Value="#424242"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -73,6 +75,16 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <ControlTemplate x:Key="validationFailed">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="2">
+                    <AdornedElementPlaceholder />
+                </Border>
+                <TextBlock Foreground="Red" FontSize="25" FontWeight="Bold"
+                           Text="!"/>
+
+            </StackPanel>
+        </ControlTemplate>
     </UserControl.Resources>
     <Border HorizontalAlignment="Center" VerticalAlignment="Center"
             BorderBrush="{Binding ElementName=LoginButton,Path=Background}"
@@ -93,7 +105,7 @@
 
             <Border>
 
-                <StackPanel Margin="0 15 0 15" DataContext="{Binding CurrentUser}">
+                <StackPanel Margin="0 15 0 15" >
                     <Border CornerRadius="10">
                         
                         <Grid>
@@ -109,12 +121,21 @@
                                            Source="/Resources/Icons/home.png"/>
                                     <TextBox x:Name="UsernameBox"
                                                 Grid.Column="1"
-                                            Text="{Binding Nickname}"
-                             Style="{StaticResource LTB}"
-                            />
-                                    
-                             
-                            <TextBlock Panel.ZIndex="1" IsHitTestVisible="False"  
+                                            Style="{StaticResource LTB}"
+                                             Validation.ErrorTemplate="{StaticResource validationFailed}"
+                            >
+                                        <TextBox.Text>
+                                            <Binding Path="Login" UpdateSourceTrigger="PropertyChanged" 
+                                                     NotifyOnValidationError="True">
+                                                <Binding.ValidationRules>
+                                                    <DataErrorValidationRule/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+
+
+                                    <TextBlock Panel.ZIndex="1" IsHitTestVisible="False"  
                                        Grid.Column="1"
                                    Text="{DynamicResource Nickname}" FontSize="14"
                                    Foreground="#969696" HorizontalAlignment="Left"
@@ -179,19 +200,13 @@
 
                 <Button x:Name="LoginButton" Command="{Binding AuthorizationUserCommand}" 
                         CommandParameter="{Binding ElementName=PasswordBox}"
-                        Background="#ed5353"
+                        IsEnabled="{Binding ElementName=UsernameBox,Path=(Validation.HasError),
+                    Converter={StaticResource InverseBooleanConverter}}"
                         MinHeight="35"
-                        FontWeight="DemiBold"
-                        FontSize="15"
-                        IsDefault="True"
+                        Style="{StaticResource BaseButtonTheme}"
+                        Content="{DynamicResource Authorization}"
                         >
 
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" 
-                                   Text="{DynamicResource Authorization}"
-                                   Foreground="White"
-                                   ></TextBlock>
-                    </StackPanel>
                 </Button>
             </Border>
 

@@ -41,15 +41,19 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid Background="White">
+    <Expander Header="{DynamicResource Matches}"
+             MinWidth="500" >
+        
+        <Grid Background="#2e2c2c">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Margin="0,0,20,0">
+        <StackPanel Grid.Row="0" Margin="20,0,20,0">
             <TextBlock  Text="Category"
                         HorizontalAlignment="Center"
-                        Margin="0,5,0,5"/>
+                        Margin="0,5,0,5"
+                        Style="{StaticResource TextBlockData}"/>
             <ComboBox SelectedItem="{Binding Category}"
                       ItemsSource="{h:Enum EnumType=model:KindOfSport}"/>
         </StackPanel>
@@ -59,33 +63,47 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="0,0,20,0">
-                <TextBlock Text="{DynamicResource Command}" Margin="0,5,0,5"/>
+                <TextBlock Text="{DynamicResource Command}" Margin="0,5,0,5"
+                           Style="{StaticResource TextBlockData}"/>
                 <ComboBox SelectedItem="{Binding TeamOne}"
                           ItemsSource="{Binding Teams}"
-                          Margin="0,0,20,5"/>
-                <TextBlock Text="{DynamicResource CoefficientOnCommand}"/>
+                          Margin="0,0,10,5"/>
+                <TextBlock Text="{DynamicResource CoefficientOnCommand}"
+                           Style="{StaticResource TextBlockData}"/>
                 <Slider Minimum="1" Maximum="10" Value="{Binding FirstCoefficient}" TickFrequency="0.01"
                         IsSnapToTickEnabled="True"
                         TickPlacement="Both"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Margin="20,0,0,0">
-                <TextBlock Text="{DynamicResource Command}" Margin="0,5,0,5"/>
+                <TextBlock Text="{DynamicResource Command}" Margin="0,5,0,5"
+                           Style="{StaticResource TextBlockData}"/>
                 <ComboBox SelectedItem="{Binding TeamTwo}"
-                          Margin="0,0,20,5"
+                          Margin="0,0,10,5"
                           ItemsSource="{Binding Teams}"/>
-                <TextBlock Text="{DynamicResource CoefficientOnCommand}"/>
+                <TextBlock Text="{DynamicResource CoefficientOnCommand}"
+                           Style="{StaticResource TextBlockData}"/>
                 <Slider Minimum="1" Maximum="10" Value="{Binding SecondCoefficient}" TickFrequency="0.01"
                         IsSnapToTickEnabled="True"
                         TickPlacement="Both"/>
-            </StackPanel>
-            
-        </Grid>
-        <Button Grid.Row="1" Content="{DynamicResource Add}"
+                <Button
+                Style="{StaticResource BaseButtonTheme}"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom" 
-                Margin="5,10,20,10"
-                FontSize="20"
-                Command="{Binding AddMatchCommand}"/>
+                Margin="5,10,5,0"
+                MinWidth="100"
+                Command="{Binding AddMatchCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" 
+                                   Text="{DynamicResource Add}"
+                                   Foreground="White"
+                                   />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            
+        </Grid>
+
+        
     </Grid>
-    
+    </Expander>
 </UserControl>

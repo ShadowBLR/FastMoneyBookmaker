@@ -30,6 +30,7 @@ namespace FastMoneyBookmaker.ViewModels
         public MyProfileViewMode(BookmakerContext bookmaker,User currentUser)
         {
             CurrentUser = currentUser;
+            
             Context = bookmaker;
             if (!String.IsNullOrEmpty(CurrentUser.Avatar))
             {
