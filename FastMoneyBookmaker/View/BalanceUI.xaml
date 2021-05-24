@@ -10,7 +10,8 @@
         <StackPanel Margin="20,10,20,20">
             <TextBlock Text="{DynamicResource Sum}"
                        MinHeight="30"
-                       FontSize="24"/>
+                       FontSize="24"
+                       Style="{StaticResource TextBlockData}"/>
             <TextBox MinHeight="30"
                      FontSize="24"
                      x:Name="pOpTB"
@@ -22,11 +23,11 @@
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Put" MinHeight="30"
+                <Button Grid.Column="0" Content="{DynamicResource Put}" MinHeight="30"
                         Command="{Binding PutMoneyCommand}"
                         CommandParameter="{Binding ElementName=pOpTB}"
                         Style="{StaticResource BaseButtonTheme}"/>
-                <Button Grid.Column="2" Content="Output"
+                <Button Grid.Column="2" Content="{DynamicResource Output}"
                         Command="{Binding OutputMoneyCommand}"
                         CommandParameter="{Binding ElementName=pOpTB}"
                         Style="{StaticResource BaseButtonTheme}"

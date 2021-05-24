@@ -31,8 +31,6 @@ C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\MyProfile.baml
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\PersonalAccountUI.baml
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\FastMoneyBookmaker.csproj.CopyComplete
-C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\MessageBox.g.cs
-C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\MessageBox.baml
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\Resources\Themes\MenuButtonTheme.baml
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\SettingsUI.g.cs
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\SettingsUI.baml
@@ -51,3 +49,5 @@ C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\Resou
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\Resources\Themes\TextBoxTheme.baml
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\Resources\Themes\ButtonTheme.baml
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\Resources\Themes\DataGridRowTheme.baml
+C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\MessageBox\MessageBox.g.cs
+C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\MessageBox\MessageBox.baml

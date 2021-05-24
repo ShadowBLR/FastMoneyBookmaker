@@ -12,18 +12,45 @@
      
     </UserControl.Resources>
     <Grid>
-        <DataGrid ItemsSource="{Binding Matches}" AutoGenerateColumns="False"
-                  IsReadOnly="True" CanUserAddRows="False" CanUserSortColumns="True"
+        <StackPanel>
+        <DataGrid ItemsSource="{Binding Path=Matches}" AutoGenerateColumns="False"
+                  IsReadOnly="False" CanUserAddRows="False" CanUserSortColumns="True"
                   HorizontalScrollBarVisibility="Disabled" MinRowHeight="30"
+                  SelectionMode="Single" Name="MatchesDataGrid"
+                  SelectedItem="{Binding SelectedMatch}"
                   >
-            <DataGridRow Style="{StaticResource DataGridRow}"/>
-            <DataGrid.Columns >
-                <DataGridTextColumn Header="{DynamicResource Id}" Binding="{Binding Path=Id}" Width="0.3*"/>
-                <DataGridTextColumn Header="{DynamicResource KindOfSport}" Binding="{Binding Path=KindOfSport}" Width="1*"/>
-                <DataGridTextColumn Header="{DynamicResource TeamName}" Binding="{Binding Path=Teams[0].Name}" Width="1*"/>
-                <DataGridTextColumn Header="{DynamicResource TeamName}" Binding="{Binding Teams[1].Name}" Width="1*"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="{DynamicResource Id}" Binding="{Binding Path=Id}" Width="0.3*"/>
+                    <DataGridTextColumn Header="{DynamicResource KindOfSport}" Binding="{Binding Path=KindOfSport}" Width="1*"/>
+                    <DataGridTextColumn Header="{DynamicResource TeamName}" Binding="{Binding Path=MatchTeams[0].Team.Name}" Width="1*"/>
+                    <DataGridTextColumn Header="{DynamicResource TeamName}" Binding="{Binding Path=MatchTeams[1].Team.Name}" Width="1*"/>
+                    <DataGridTextColumn Header="{DynamicResource MatchResult}" Binding="{Binding MatchResult}" Width="1*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Background="#2e2c2c" Margin="0,10,0,10">
+                <TextBlock Text="{DynamicResource TeamName}"
+                           Style="{StaticResource TextBlockData}"/>
+                <ComboBox HorizontalAlignment="Left" MinWidth="100">
+                    <ComboBoxItem Content="{Binding SelectedMatch.MatchTeams[0].Team.Name}"/>
+                    <ComboBoxItem Content="{Binding SelectedMatch.MatchTeams[1].Team.Name}"/>
+                </ComboBox>
+                <TextBlock Text="{DynamicResource Sum}"
+                           Style="{StaticResource TextBlockData}"/>
+                
+                    <TextBox Style="{StaticResource TextBoxData}"
+                         HorizontalAlignment="Left"
+                         MinWidth="100"
+                             Name="SumTB"/>
+                    <Button Content="{DynamicResource MakeABet}"
+                            Command="{Binding  MakeABetCommand}"
+                            CommandParameter="{Binding ElementName=SumTB}"
+                            Style="{StaticResource BaseButtonTheme}"
+                            HorizontalAlignment="Right"
+                            Padding="5"
+                            Margin="5"
+                            
+                            />
+                </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

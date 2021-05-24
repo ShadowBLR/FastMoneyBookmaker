@@ -11,6 +11,7 @@ using System;
 using FastMoneyBookmaker.ViewModels;
 using FastMoneyBookmaker.Models;
 using System.ComponentModel;
+using FastMoneyBookmaker.Models.Enums;
 
 namespace FastMoneyBookmaker.ViewModels
 {
@@ -116,11 +117,11 @@ namespace FastMoneyBookmaker.ViewModels
                 if (helper.IsEqual(activeUser.User.Hash))
                 {
 
-                    System.Windows.MessageBox.Show("Hash equals");
+                    
                     CurrentUser =mainViewModel.CurrentUser= activeUser.User;
                     if (activeUser.User.IsBlocked)
                     {
-                        System.Windows.MessageBox.Show("YOU ARE BLOKED");
+                        MessageBoxCaller.Call("YouBlocked", ActionResult.Error);
                     }
                     else
                     {
@@ -142,7 +143,7 @@ namespace FastMoneyBookmaker.ViewModels
             }
             else
             {
-                System.Windows.MessageBox.Show("Login or password incorrected");
+                MessageBoxCaller.Call(("IncorrectedData"), Models.Enums.ActionResult.Succes);
             }
               
         }

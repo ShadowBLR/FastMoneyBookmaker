@@ -13,12 +13,13 @@ namespace FastMoneyBookmaker.Models
     {
         public int Id { get; set; }
         public KindOfSport KindOfSport { get; set; }
+        public MatchResult MatchResult { get; set; }
         public ICollection<Bet> Bets { get; set; }
-        public ICollection<Team> Teams { get; set; }
+        public ICollection<MatchTeam> MatchTeams { get; set; }
         public Match()
         {
             Bets = new ObservableCollection<Bet>();
-            Teams = new ObservableCollection<Team>();
+            MatchTeams = new ObservableCollection<MatchTeam>();
         }
     }
 }

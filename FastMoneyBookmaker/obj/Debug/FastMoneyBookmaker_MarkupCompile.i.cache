@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\App.xaml
-21-925971005
+212121308198
 
-51260665069
-161335784773
-MainWindow.xaml;Resources\Languages\Lang.ru-RU.xaml;Resources\Languages\Lang.xaml;Resources\Themes\ButtonTheme.xaml;Resources\Themes\DataGridRowTheme.xaml;Resources\Themes\LanguageComboBoxTheme.xaml;Resources\Themes\MenuButtonTheme.xaml;Resources\Themes\TextBlockTheme.xaml;Resources\Themes\TextBoxTheme.xaml;Resources\Themes\ValidationFailedTheme.xaml;View\AdministratorUI.xaml;View\BalanceUI.xaml;View\LoginUI.xaml;View\MatchesUI.xaml;View\MessageBox.xaml;View\MyBetsUI.xaml;View\MyProfile.xaml;View\NewMatchUserControl.xaml;View\PersonalAccountUI.xaml;View\Register.xaml;View\SettingsUI.xaml;
+54-477565993
+17-270582853
+MainWindow.xaml;Resources\Languages\Lang.ru-RU.xaml;Resources\Languages\Lang.xaml;Resources\Themes\ButtonTheme.xaml;Resources\Themes\DataGridRowTheme.xaml;Resources\Themes\LanguageComboBoxTheme.xaml;Resources\Themes\MenuButtonTheme.xaml;Resources\Themes\TextBlockTheme.xaml;Resources\Themes\TextBoxTheme.xaml;Resources\Themes\ValidationFailedTheme.xaml;View\AdministratorUI.xaml;View\BalanceUI.xaml;View\LoginUI.xaml;View\MatchesUI.xaml;View\MessageBox\MessageBox.xaml;View\MyBetsUI.xaml;View\MyProfile.xaml;View\NewMatchUserControl.xaml;View\PersonalAccountUI.xaml;View\Register.xaml;View\SettingsUI.xaml;
 
 True
 

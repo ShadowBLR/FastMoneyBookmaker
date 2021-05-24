@@ -8,6 +8,7 @@ using System.IO;
 using System.Windows.Input;
 using System.Linq;
 using System.Windows.Media.Imaging;
+using FastMoneyBookmaker.Helpers;
 
 namespace FastMoneyBookmaker.ViewModels
 {
@@ -59,11 +60,8 @@ namespace FastMoneyBookmaker.ViewModels
         }
         private void LoadPicture(ref object obj)
         {
-            string oldPath="";
-            if (obj is string)
-            {
-                oldPath = (string)obj;
-            }
+            
+            
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 DefaultExt = "jpg",
@@ -73,11 +71,8 @@ namespace FastMoneyBookmaker.ViewModels
             if (openFileDialog.ShowDialog() == true)
             {
                 string path = @"../../FTP/Images/"+CurrentUser.Nickname + Path.GetExtension(openFileDialog.FileName);
-                if (!string.IsNullOrEmpty(oldPath))
-                {
-                    File.Delete(oldPath);
-                }
-                File.Copy(openFileDialog.FileName, path);   
+           
+                File.Copy(openFileDialog.FileName, path,true);   
                 CurrentUser.Avatar = path;
                 ImagePath = BitmapFrame.Create
                     (new Uri(
@@ -91,7 +86,7 @@ namespace FastMoneyBookmaker.ViewModels
             }
             else
             {
-                System.Windows.MessageBox.Show("ERROR");
+                MessageBoxCaller.Call("Error", Models.Enums.ActionResult.Error);
             }
         }
         #endregion

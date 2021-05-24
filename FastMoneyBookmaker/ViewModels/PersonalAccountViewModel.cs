@@ -25,6 +25,15 @@ namespace FastMoneyBookmaker.ViewModels
             get => currentUser;
             set => Set(ref currentUser, value);
         }
+        
+        public decimal Balance
+        {
+            get => CurrentUser.Balance;
+            set
+            {
+                CurrentUser.Balance = value;
+            }
+        }
         public BookmakerContext BookmakerContext { get; set; }
         public List<IPageVIewModel> MenuList { get; set; }
         private IPageVIewModel selectedVM;
@@ -38,6 +47,7 @@ namespace FastMoneyBookmaker.ViewModels
             mainVM = parent;
             BookmakerContext = context;
             CurrentUser = mainVM.CurrentUser;
+            CurrentUser.RefeshBalance += CurrentUser_RefeshBalance;
             MenuList = new List<IPageVIewModel>()
             {
                 new SettingsViewModel(mainVM.mainWnd),
@@ -47,6 +57,11 @@ namespace FastMoneyBookmaker.ViewModels
                 new BalanceViewModel(context,mainVM.CurrentUser)
             };
 
+        }
+
+        private void CurrentUser_RefeshBalance(decimal value)
+        {
+            Balance = value;
         }
         #region Commands
         #region ShowSettingsUICommand

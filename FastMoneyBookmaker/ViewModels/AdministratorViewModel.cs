@@ -114,6 +114,7 @@ namespace FastMoneyBookmaker.ViewModels
 
             Teams = bookmakerContext.Teams.Local;
             Matches = bookmakerContext.Matches.Local;
+
             Users = bookmakerContext.Users.Local;
             
         }

@@ -10,11 +10,11 @@ namespace FastMoneyBookmaker.Models
     {  
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Match> Matches { get; set; }
+        public ICollection<MatchTeam> MatchTeams { get; set; }
         public Team ()
         {
-            Matches = new ObservableCollection<Match>();
             Name = "";
+            MatchTeams = new ObservableCollection<MatchTeam>();
         }
     }
 }

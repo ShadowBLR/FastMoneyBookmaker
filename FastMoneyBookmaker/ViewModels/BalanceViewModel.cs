@@ -1,7 +1,9 @@
 ﻿using CourseWork.ViewModels.Base;
 using FastMoneyBookmaker.Commands.Base;
+using FastMoneyBookmaker.Helpers;
 using FastMoneyBookmaker.Interfaces;
 using FastMoneyBookmaker.Models;
+using FastMoneyBookmaker.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,16 @@ namespace FastMoneyBookmaker.ViewModels
             get => currentUser;
             set => Set(ref currentUser, value);
         }
+        public decimal Balance
+        {
+            get => CurrentUser.Balance;
+            set
+            {
+                CurrentUser.Balance = value;
+                OnPropertyChanged("Balance");
+                CurrentUser?.BalanceChanged(value);
+            }
+        }
         private BookmakerContext bookmakerContext;
         public BookmakerContext BookmakerContext
         {
@@ -31,6 +43,7 @@ namespace FastMoneyBookmaker.ViewModels
         {
             bookmakerContext = context;
             CurrentUser = user;
+            Balance = CurrentUser.Balance;
         }
         #endregion
         #region Commands
@@ -45,30 +58,38 @@ namespace FastMoneyBookmaker.ViewModels
                 return putMoneyCommand;
             }
         }
-        public bool CanPutMoney(object obj) => true;
+        public bool CanPutMoney(object obj)
+        {
+            if (obj is TextBox tb)
+            {
+                if (decimal.TryParse(tb.Text, out decimal money) && !(money < 0))
+                    return true;
+            }
+            return false;
+        }
         public void PutMoney(object obj)
         {
             if (obj is TextBox tb)
             {
-                if (decimal.TryParse(tb.Text, out decimal money))
+                if (decimal.TryParse(tb.Text, out decimal money)&&!(money<0))
                 {
                     money = Math.Round(money, 2);
-                    if (!(CurrentUser.Balance + money < money)&&(CurrentUser.Balance+money <
+                    if (!(Balance + money < money)&&(Balance+money <
                         decimal.MaxValue))
                     {
-                        CurrentUser.Balance += money;
+                        Balance += money;
                         BookmakerContext.Entry(CurrentUser).State = System.Data.Entity.EntityState.Modified;
                         BookmakerContext.SaveChanges();
-                        System.Windows.MessageBox.Show("Succes");
+                        MessageBoxCaller.Call("Success", ActionResult.Succes);
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show("Balance limit exceeded");
+                        MessageBoxCaller.Call("BalanceExceeded",ActionResult.Error);
                     }
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Incorrected value");
+                    MessageBoxCaller.Call("IncorrectedData", ActionResult.Error);
                 }
                 tb.Text = "";
             }
@@ -85,7 +106,13 @@ namespace FastMoneyBookmaker.ViewModels
                 return outputMoneyCommand;
             }
         }
-        public bool CanOutputMoney(object obj) => true;
+        public bool CanOutputMoney(object obj)
+        {
+            if (obj is TextBox tb)
+                if (decimal.TryParse(tb.Text, out decimal money) && !(money < 0))
+                    return true;
+            return false;
+        }
         public void OutputMoney(object obj)
         {
             if (obj is TextBox tb)
@@ -95,25 +122,25 @@ namespace FastMoneyBookmaker.ViewModels
                     if (decimal.TryParse(tb.Text, out decimal money))
                     {
                         money = Math.Round(money, 2);
-                        if (CurrentUser.Balance < money)
+                        if (Balance < money)
                         {
-                            System.Windows.MessageBox.Show("There are not enough funds in the account");
+                            MessageBoxCaller.Call("NotFunds", ActionResult.Error);
                         }
                         else
                         {
-                            CurrentUser.Balance -=money;
+                            Balance -=money;
                             BookmakerContext.SaveChanges();
-                            System.Windows.MessageBox.Show("Succes");
+                            MessageBoxCaller.Call("Success", ActionResult.Succes);
                         }
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show("Incorrected value");
+                        MessageBoxCaller.Call("IncorrectedData", ActionResult.Error);
                     }
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Your account is'nt confirmed");
+                    MessageBoxCaller.Call("IsNotConfirmed", ActionResult.Error);
                 }
                 tb.Text = "";
             }

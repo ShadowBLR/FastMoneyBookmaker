@@ -51,4 +51,15 @@
     <v:String x:Key="Put">Put</v:String>
     <v:String x:Key="Output">Output</v:String>
     <v:String x:Key="Sum">Sum</v:String>
+    <v:String x:Key="IncorrectedData">Incorrected data</v:String>
+    <v:String x:Key="Error">Error</v:String>
+    <v:String x:Key="Success">Success</v:String>
+    <v:String x:Key="SuccessPutMoney">Success put money</v:String>
+    <v:String x:Key="ErrorPutMoney">Error put money</v:String>
+    <v:String x:Key="YouBlocked">You are blocked</v:String>
+    <v:String x:Key="AlreadyExists">Nickname or email already exists</v:String>
+    <v:String x:Key="BalanceExceeded">Balance limit exceeded</v:String>
+    <v:String x:Key="IsNotConfirmed">Your account is'nt confirmed</v:String>
+    <v:String x:Key="NotFunds">There are not enough funds in the account</v:String>
+    <v:String x:Key="CancelABet">Cancel a bet</v:String>
 </ResourceDictionary>

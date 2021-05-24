@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FastMoneyBookmaker.Models
 {
+    
     class User
     {
+        public delegate void UserEvent(decimal a);
+
+        public event UserEvent RefeshBalance;
+
+
         public int Id { get; set; }
         public string Nickname { get; set; }
         public decimal Balance { get; set; }
@@ -23,11 +30,13 @@ namespace FastMoneyBookmaker.Models
         public virtual ICollection<Bet> Bets { get; set;}
         public User()
         {
-            Passport = new Passport();
-            Contact = new Contact();
-            Bets = new ObservableCollection<Bet>();
             Nickname = "";
             Avatar = "";
+
+        }
+        public void BalanceChanged(decimal value)
+        {
+            RefeshBalance?.Invoke(value);
         }
     }
 }

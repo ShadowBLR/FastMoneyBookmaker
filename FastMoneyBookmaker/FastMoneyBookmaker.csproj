@@ -48,6 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -68,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\Base\Command.cs" />
     <Compile Include="Commands\Base\RelayCommand.cs" />
+    <Compile Include="Commands\CloseCommands.cs" />
     <Compile Include="Converters\BooleanAndConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\StringToBooleanConverter.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="Converters\ByteArryaToImageConverter.cs" />
     <Compile Include="Helpers\EnumExtension.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Helpers\MessageBoxCaller.cs" />
     <Compile Include="Interfaces\IConverter.cs" />
     <Compile Include="Interfaces\IPageVIewModel.cs" />
     <Compile Include="Models\Bet.cs" />
@@ -85,7 +88,8 @@
     <Compile Include="Models\Enums\MatchResult.cs" />
     <Compile Include="Models\Enums\BetState.cs" />
     <Compile Include="Models\Match.cs" />
-    <Compile Include="Models\MessageBox.cs" />
+    <Compile Include="Models\MatchTeam.cs" />
+    <Compile Include="Helpers\MessageBoxContent.cs" />
     <Compile Include="Models\Passport.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\User.cs" />
@@ -112,7 +116,7 @@
     <Compile Include="View\MatchesUI.xaml.cs">
       <DependentUpon>MatchesUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MessageBox.xaml.cs">
+    <Compile Include="View\MessageBox\MessageBox.xaml.cs">
       <DependentUpon>MessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MyBetsUI.xaml.cs">
@@ -197,7 +201,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MessageBox.xaml">
+    <Page Include="View\MessageBox\MessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,22 +264,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\add.png" />
-    <Resource Include="Resources\Icons\Basketball.png" />
     <Resource Include="Resources\Icons\block.png" />
     <Resource Include="Resources\Icons\card.png" />
     <Resource Include="Resources\Icons\check.png" />
     <Resource Include="Resources\Icons\CloseIcon.png" />
     <Resource Include="Resources\Icons\door.png" />
-    <Resource Include="Resources\Icons\ENG.jpg" />
     <Resource Include="Resources\Icons\home.png" />
     <Resource Include="Resources\Icons\image.png" />
-    <Resource Include="Resources\Icons\Logotype.png" />
-    <Resource Include="Resources\Icons\nodoor.png" />
     <Resource Include="Resources\Icons\NoLogo.png" />
     <Resource Include="Resources\Icons\personal.png" />
     <Resource Include="Resources\Icons\refresh.png" />
-    <Resource Include="Resources\Icons\return.png" />
-    <Resource Include="Resources\Icons\RUS.jpg" />
     <Resource Include="Resources\Icons\save.png" />
     <Resource Include="Resources\Icons\search.png" />
     <Resource Include="Resources\Icons\send.png" />
@@ -283,7 +281,6 @@
     <Resource Include="Resources\Icons\SoccerBall.png" />
     <Resource Include="Resources\Icons\StandartAvatar.png" />
     <Resource Include="Resources\Icons\trash.png" />
-    <Resource Include="Resources\Icons\UFC.png" />
     <Resource Include="Resources\Icons\wallet.png" />
   </ItemGroup>
   <ItemGroup>

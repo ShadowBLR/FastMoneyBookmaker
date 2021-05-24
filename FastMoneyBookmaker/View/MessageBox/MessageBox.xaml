@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:FastMoneyBookmaker.View"
         xmlns:cmd="clr-namespace:FastMoneyBookmaker.Commands"
         mc:Ignorable="d"
-        Height="230" Width="400"
-        WindowStyle="None"
-        ResizeMode="NoResize"
-        AllowsTransparency="True"
+        Height="270" Width="300"
+        ResizeMode="NoResize" 
+        ShowInTaskbar="False"
         Background="Transparent"
-        x:Name="OkWindow">
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen"
+        x:Name="MessageBoxWindow"
+       >
     <Border Background="Transparent" CornerRadius="20">
         <Grid>
             <Grid.RowDefinitions>
@@ -19,12 +21,12 @@
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
             <Border Grid.Row="0" 
-                    x:Name="BorderResult" Background="#ed5353"
+                    x:Name="BorderResult" Background="{Binding Color}"
                     CornerRadius="10,10,0,0">
                     
             </Border>
             <Image MaxHeight="96" MaxWidth="96" Grid.Row="0"
-                       Source="/Resources/Icons/error.png"
+                       Source="{Binding Bitmap}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center" Panel.ZIndex="1" />
             <Border Grid.Row="1" Background="White"
@@ -35,31 +37,34 @@
                         <RowDefinition Height="1.6*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Ошибка короче, жми ок"
+                    <TextBlock Text="{Binding Title}"
                            Grid.Row="0"
-                               FontSize="16"
+                               FontSize="20"
                                FontWeight="DemiBold"
-                               HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Row="1" Text="Неверный логин или пароль"
+                               HorizontalAlignment="Center"
+                               Foreground="{Binding Color}"/>
+                    <TextBlock Grid.Row="1" Text="{Binding Text}"
                                TextAlignment="Justify"
                                Margin="15,0,15,0"
                                FontFamily="HelveticaRegular"
-                                FontSize="13"
-                               TextWrapping="Wrap">
+                                FontSize="16"
+                               TextWrapping="Wrap"
+                               Foreground="{Binding Color}">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
-                                <Setter Property="TextElement.FontFamily" Value="/Resources/Fonts/#HelveticaRegular"/>
+                                <Setter Property="TextElement.FontFamily" 
+                                        Value="/Resources/Fonts/#HelveticaRegular"/>
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
                     <Button HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Grid.Row="2"
-                            Background="#ed5353"
+                            Background="{Binding Color}"
                             Foreground="white"
                             FontFamily="Arial"
-                            Command="{StaticResource CloseWindowCommand}"
-                            CommandParameter="{Binding ElementName=OkWindow}"
+                            Command="{x:Static cmd:CloseCommands.CloseWindowCommand}"
+                            CommandParameter="{Binding ElementName=MessageBoxWindow}"
                             >
                         <Button.Effect>
                             <DropShadowEffect ShadowDepth="1"

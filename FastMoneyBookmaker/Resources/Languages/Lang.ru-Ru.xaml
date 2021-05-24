@@ -51,4 +51,15 @@
     <v:String x:Key="Put">Пополнить</v:String>
     <v:String x:Key="Output">Вывести</v:String>
     <v:String x:Key="Sum">Сумма</v:String>
+    <v:String x:Key="IncorrectedData">Некорректные данные</v:String>
+    <v:String x:Key="Error">Ошибка</v:String>
+    <v:String x:Key="Success">Успех</v:String>
+    <v:String x:Key="SuccessPutMoney">Успешное пополнение счета</v:String>
+    <v:String x:Key="ErrorPutMoney">Ошибка пополнения счета</v:String>
+    <v:String x:Key="YouBlocked">Вы заблокированы</v:String>
+    <v:String x:Key="AlreadyExists">Пользователь с таким именем или почтой уже существует</v:String>
+    <v:String x:Key="BalanceExceeded">Лимит баланса превышен</v:String>
+    <v:String x:Key="IsNotConfirmed">Ваш аккаунт не подтвержден</v:String>
+    <v:String x:Key="NotFunds">Недостаточно средств на счету</v:String>
+    <v:String x:Key="CancelABet">Отменить ставку</v:String>
 </ResourceDictionary>

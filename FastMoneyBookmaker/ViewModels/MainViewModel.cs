@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using System.Windows;
+using System.Collections.ObjectModel;
+using System;
+using FastMoneyBookmaker.Helpers;
 
 namespace FastMoneyBookmaker.ViewModels
 {
@@ -42,9 +45,43 @@ namespace FastMoneyBookmaker.ViewModels
         #region constructor
         public MainViewModel(BookmakerContext bk,MainWindow mainWindow)
         {
+            
             mainWnd = mainWindow;
             BookmakerContext = bk;
+            /*User us = bookmakerContext.Users.FirstOrDefault();
+            us.Bets = new ObservableCollection<Bet>
+            {
+                new Bet
+                {
+                    DateOfBet=DateTime.Now,
+                      Cash=12312.321M,
+                      State=BetState.Wait,
+                      Match=new Match
+                      {
+                          MatchTeams = new ObservableCollection<MatchTeam>
+                          {
+                               new MatchTeam
+                               {
+                                   Team =  new Team
+                                   {
+                                       Name="TeamOne"
+                                   }
+                               },
+                               new MatchTeam
+                               {
+                                   Team = new Team
+                                   {
+                                       Name="TeamTwo"
+                                   }
+                               }
+                          }
+
+                      }
+                }
+            };
+            BookmakerContext.SaveChanges();*/
             CurrentUser = new User();
+            //CurrentUser.ResfreshBalance += (null) => OnPropertyChanged("Balance");
             ListViewModel = new List<IPageVIewModel>
             {
                 new LoginViewModel(this,BookmakerContext),

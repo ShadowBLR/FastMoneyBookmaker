@@ -3,6 +3,7 @@ using FastMoneyBookmaker.Commands.Base;
 using FastMoneyBookmaker.Helpers;
 using FastMoneyBookmaker.Interfaces;
 using FastMoneyBookmaker.Models;
+using FastMoneyBookmaker.Models.Enums;
 using System;
 using System.ComponentModel;
 using System.Data.Entity;
@@ -94,13 +95,13 @@ namespace FastMoneyBookmaker.ViewModels
                         }
                         else
                         {
-                            System.Windows.MessageBox.Show("this nickname already exists");
+                            MessageBoxCaller.Call("AlreadyExists", ActionResult.Error);
                         }
 
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show("this email already exists");
+                        MessageBoxCaller.Call("AlreadyExists", ActionResult.Error);
                     }
                 }
                 else

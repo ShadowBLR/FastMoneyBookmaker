@@ -10,9 +10,10 @@ namespace FastMoneyBookmaker
         public DbSet<Bet> Bets { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<MatchTeam> MatchTeams { get; set; }
         public DbSet<Passport> Passports { get; set; }
         public DbSet<Match> Matches { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Team>().HasKey(t => t.Id);
             modelBuilder.Entity<Team>().Property(t => t.Name).IsOptional();
@@ -31,15 +32,9 @@ namespace FastMoneyBookmaker
 
             modelBuilder.Entity<Match>()
                 .HasMany(m => m.Teams)
-                .WithMany(t => t.Matches)
-                .Map(z =>
-                {
-                    z.MapLeftKey("Match_Id");
-                    z.MapRightKey("Team_Id");
-                    z.ToTable("MatchTeam");
-                });
+                .WithRequired(t=>t.)
 
             base.OnModelCreating(modelBuilder);
-        }
+        }*/
     }
 }
