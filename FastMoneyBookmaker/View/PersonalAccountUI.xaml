@@ -38,38 +38,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Background="Transparent"
-                        Margin="10"
-                        BorderBrush="AliceBlue"
-                        HorizontalAlignment="Center"
-                        >
+            
                
-                <Button.Template>
-                    <ControlTemplate  TargetType="Button">
-                        <Grid>
-                            <Ellipse Fill="Silver"></Ellipse>
-                            <Label Content="{TemplateBinding Content}"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-                
-            </Button>
-            <Button Grid.Column="0" Margin="10"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center">
-                
-                <Button.Template>
-                    <ControlTemplate  TargetType="Button">
-                        <Grid>
-                            <Ellipse Fill="Silver"></Ellipse>
-                            <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+               
+            
             <StackPanel Grid.Column="1"  HorizontalAlignment="Right">
                 <TextBlock Grid.Column="1" HorizontalAlignment="Right" Text="{Binding CurrentUser.Nickname}"
                        Foreground="White"/>

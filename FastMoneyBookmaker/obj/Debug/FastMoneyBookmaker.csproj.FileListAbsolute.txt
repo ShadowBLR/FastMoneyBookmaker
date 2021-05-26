@@ -51,3 +51,4 @@ C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\Resou
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\Resources\Themes\DataGridRowTheme.baml
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\MessageBox\MessageBox.g.cs
 C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\View\MessageBox\MessageBox.baml
+C:\Users\User\source\repos\FastMoneyBookmaker\FastMoneyBookmaker\obj\Debug\Resources\Themes\CheckBoxTheme.baml

@@ -12,9 +12,7 @@ namespace FastMoneyBookmaker.Models
     class User
     {
         public delegate void UserEvent(decimal a);
-
         public event UserEvent RefeshBalance;
-
 
         public int Id { get; set; }
         public string Nickname { get; set; }

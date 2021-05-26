@@ -6,10 +6,8 @@ using FastMoneyBookmaker.Models;
 using FastMoneyBookmaker.Models.Enums;
 using System;
 using System.ComponentModel;
-using System.Data.Entity;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -106,7 +104,7 @@ namespace FastMoneyBookmaker.ViewModels
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Password is not valid");
+                    MessageBoxCaller.Call("NotValidPassword",ActionResult.Error);
                 }
    
             }

@@ -143,7 +143,7 @@ namespace FastMoneyBookmaker.ViewModels
             }
             else
             {
-                MessageBoxCaller.Call(("IncorrectedData"), Models.Enums.ActionResult.Succes);
+                MessageBoxCaller.Call(("IncorrectedData"), ActionResult.Error);
             }
               
         }

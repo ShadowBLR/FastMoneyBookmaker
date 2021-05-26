@@ -35,6 +35,7 @@ namespace FastMoneyBookmaker.ViewModels
             set
             {
                 CurrentUser.Balance = value;
+
                 CurrentUser?.BalanceChanged(value); 
             }
         }

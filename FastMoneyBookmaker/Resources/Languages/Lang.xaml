@@ -62,4 +62,5 @@
     <v:String x:Key="IsNotConfirmed">Your account is'nt confirmed</v:String>
     <v:String x:Key="NotFunds">There are not enough funds in the account</v:String>
     <v:String x:Key="CancelABet">Cancel a bet</v:String>
+    <v:String x:Key="NotValidPassword">Password is not valid</v:String>
 </ResourceDictionary>

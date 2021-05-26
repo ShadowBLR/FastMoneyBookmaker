@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Resources/Themes/TextBlockTheme.xaml"/>
                 <ResourceDictionary Source="Resources/Themes/ButtonTheme.xaml"/>
                 <ResourceDictionary Source="Resources/Themes/DataGridRowTheme.xaml"/>
+                <ResourceDictionary Source="Resources/Themes/CheckBoxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type vm:MyProfileViewMode}">
                 <view:MyProfile/>

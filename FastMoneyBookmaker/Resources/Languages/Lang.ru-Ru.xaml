@@ -62,4 +62,5 @@
     <v:String x:Key="IsNotConfirmed">Ваш аккаунт не подтвержден</v:String>
     <v:String x:Key="NotFunds">Недостаточно средств на счету</v:String>
     <v:String x:Key="CancelABet">Отменить ставку</v:String>
+    <v:String x:Key="NotValidPassword">Некорректный пароль</v:String>
 </ResourceDictionary>

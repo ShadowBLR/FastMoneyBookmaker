@@ -32,6 +32,7 @@ namespace FastMoneyBookmaker.ViewModels
             set
             {
                 CurrentUser.Balance = value;
+                OnPropertyChanged("Balance");
             }
         }
         public BookmakerContext BookmakerContext { get; set; }
